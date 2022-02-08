@@ -15,6 +15,7 @@ class UserController extends Controller
           //Validate Inputs
           $request->validate([
               'name'=>'required',
+              'phone'=>'required|min:10',
               'email'=>'required|email|unique:users,email',
               'password'=>'required|min:5|max:30',
               'cpassword'=>'required|min:5|max:30|same:password'
@@ -22,6 +23,7 @@ class UserController extends Controller
 
           $user = new User();
           $user->name = $request->name;
+          $user->phone = $request->phone;
           $user->email = $request->email;
           $user->password = Hash::make($request->password);
           $save = $user->save();
