@@ -42,7 +42,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <label class="logo">
-                    <a href="{{ url('/home') }}">
+                    <a href="{{ url('/') }}">
                         Arabiaمرحباً 
                      </a> 
                 </label> 
@@ -59,10 +59,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li>
-                            <a href="#About" class="nav-link"> Home  </a> 
+                            <a href="{{ url('/') }}" class="nav-link"> Home  </a> 
                         </li>
                         <li> 
-                            <a href="#Skill" class="nav-link">  Course </a>
+                            <a href="{{ route('user.home') }}" class="nav-link">  Course </a>
                         </li>
                         <li> 
                             <a href="#service" class="nav-link">  Service </a>
@@ -114,54 +114,58 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
-        <footer>
-            <div class="container">
-              <div class="three">
-                <div class="item">
-                  <h4 class="ftco-heading-2">About</h4>
-                  <p> Far far away, behind the word mountains,
-                     far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                      <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-                      <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-                      <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <h4 class="ftco-heading-2">​Recent Courses </h4>
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                    <li><a href="#" class="py-2 d-block"> Courses </a></li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <h4 class="ftco-heading-2">Have a Questions?</h4>
-                  <div class="block-23 mb-3">
-                    <ul>
-                      <li><span class="icon fa fa-map-marker"></span><span class="text">​ Amman - Jordan </span></li>
-                      <li><span class="icon fa fa-phone"></span><span class="text"> +962 777 777 764 </span></li>
-                      <li><span class="icon fa fa-paper-plane"></span><span class="text"> info@sarah.com</span></li>
-                    </ul>
-                  </div>
-                </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-center">
-          
-              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright ©<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart" aria-hidden="true"></i>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
-          </div>
-          </div>
-          </footer>
+
+        <footer class="footer-distributed">
+			<div class="footer-left">
+          <img src="img/logo.png">
+				<h3>About<span>Arabia</span></h3>
+
+				<p class="footer-links">
+					<a href="{{ url('/') }}">Home</a>
+					|
+					<a href="{{ route('user.home') }}">Blog</a>
+					|
+					<a href="{{ url('/') }}">About</a>
+					|
+					<a href="{{ url('/') }}">Contact</a>
+				</p>
+
+				<p class="footer-company-name">© 2022 Arabia Ltd.</p>
+			</div>
+
+			<div class="footer-center">
+				<div>
+                    <i class="fa fa-regular fa-location-dot"></i>
+                    <p><span>Amman - Jordan</span></p>
+				</div>
+
+				<div>
+					<i class="fa fa-thin fa-phone"></i>
+					<p>+962 777 777 764</p>
+				</div>
+				<div>
+					<i class="fa fa-regular fa-envelope"></i>
+					<p><a href="mailto:support@arabia.com">support@arabia.com </a></p>
+				</div>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About the company</span>
+                    Far far away, behind the word mountains,
+                    far from the countries Vokalia and Consonantia, there live the blind texts.
+                    <div class="footer-icons">
+					<a href="#"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#"><i class="fa-brands fa-twitter"></i></a>
+					<a href="#"><i class="fa-brands fa-instagram"></i></a>
+					<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+					<a href="#"><i class="fa-brands fa-youtube"></i></a>
+				</div>
+			</div>
+		</footer>
+	
     </div>
 </body>
 </html>
