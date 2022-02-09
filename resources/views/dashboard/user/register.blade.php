@@ -26,9 +26,7 @@
                         {{ Session::get('fail') }}
                     </div>
                     @endif
-    
                     @csrf
-
                     <input type="text" id="name" name="name" placeholder="Enter your Name" value="{{ old('name') }}"/>
                     <span class="text-danger">@error('name'){{ $message }} @enderror</span>
 

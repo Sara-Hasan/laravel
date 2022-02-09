@@ -68,10 +68,10 @@
                             <a href="#service" class="nav-link">  Service </a>
                         </li>
                         <li>
-                            <a href="#About" class="nav-link"> About us  </a> 
+                            <a href="{{ route('user.about') }}" class="nav-link"> About us  </a> 
                         </li>
                         <li>
-                            <a class="contact nav-link" href="#Contact">  Contact us </a>
+                            <a class="contact nav-link" href="{{ route('user.contactcreate') }}">  Contact us </a>
                         </li>
                         <li> 
                             <a href="" class="nav-link">  Instructor </a>

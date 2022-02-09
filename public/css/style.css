@@ -579,7 +579,7 @@ input[type=text] {
     background-color: #F2F2F2;
     border: none;
 }
-input[type=submit] {
+button[type=submit] {
     width: 100%;
     height: 30%;
     background-color: #F1C50E;
@@ -589,9 +589,10 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    color: #000;
 
 }
-  input[type=submit]:hover {
+  button[type=submit]:hover {
     background-color: #f7d449;
 }
   .same-col {
