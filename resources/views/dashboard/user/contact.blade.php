@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
-<header style="background-image: url('../img/bg2.jpeg'); height: 230px;">
+<header style="background-image: url('../img/bg2.jpeg'); height: 200px;">
     <div class="header-bg">
-        <div class="head text-align" style="padding-top: 26rem;">
+        <div class="head text-align" style="padding-top: 8rem;">
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">
                 Home 
                 <i class="fa fa-chevron-right"></i></a></span> <span>
                 Contact us
                 <i class="fa fa-chevron-right"></i></span>
             </p>
-            <h1> Contact us</h1>
+            <h2> Contact us</h2>
         </div>
     </div>  
 </header>

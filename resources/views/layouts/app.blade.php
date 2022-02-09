@@ -62,7 +62,7 @@
                             <a href="{{ url('/') }}" class="nav-link"> Home  </a> 
                         </li>
                         <li> 
-                            <a href="{{ route('user.home') }}" class="nav-link">  Course </a>
+                            <a href="{{ route('user.course') }}" class="nav-link">  Course </a>
                         </li>
                         <li> 
                             <a href="#service" class="nav-link">  Service </a>
@@ -138,7 +138,7 @@
 
 			<div class="footer-center">
 				<div>
-                    <i class="fa fa-regular fa-location-dot"></i>
+                    <i class="fa fa-solid fa-location-arrow"></i>
                     <p><span>Amman - Jordan</span></p>
 				</div>
 
@@ -157,7 +157,7 @@
                     Far far away, behind the word mountains,
                     far from the countries Vokalia and Consonantia, there live the blind texts.
                     <div class="footer-icons">
-					<a href="#"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
 					<a href="#"><i class="fa-brands fa-twitter"></i></a>
 					<a href="#"><i class="fa-brands fa-instagram"></i></a>
 					<a href="#"><i class="fa-brands fa-linkedin"></i></a>

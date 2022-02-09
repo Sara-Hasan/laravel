@@ -34,9 +34,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::view('/register', 'dashboard.user.register')->name('register');
         Route::view('/contactcreate', 'dashboard.user.contact')->name('contactcreate');
         Route::view('/about', 'dashboard.user.about')->name('about');
+        Route::view('/course', 'dashboard.user.course')->name('course');
         Route::post('/create', [UserController::class, 'create'])->name('create');
         Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        Route::post('/contact', [ContactController::class, 'create'])->name('contact');
+        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){

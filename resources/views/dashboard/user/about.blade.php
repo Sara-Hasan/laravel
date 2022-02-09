@@ -9,7 +9,7 @@
                 About us
                 <i class="fa fa-chevron-right"></i></span>
             </p>
-            <h1> About Us</h1>
+            <h2> About Us</h2>
         </div>
     </div>  
 </header>
