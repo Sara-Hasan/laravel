@@ -6,6 +6,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
 use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserAdminController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -34,10 +36,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::view('/register', 'dashboard.user.register')->name('register');
         Route::view('/contactcreate', 'dashboard.user.contact')->name('contactcreate');
         Route::view('/about', 'dashboard.user.about')->name('about');
-        Route::view('/course', 'dashboard.user.course')->name('course');
+        // Route::view('/course', 'dashboard.user.course')->name('course');
         Route::post('/create', [UserController::class, 'create'])->name('create');
         Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
+        Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        // Route::resource('courses', CourseController::class);
+
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
@@ -54,6 +59,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.admin.home')->name('home');
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
+        Route::resource('user', UserAdminController::class);
+        // Route::get('/useradmin', function () {
+        //     return view('dashboard.admin.user');
+        // });
     });
 
 });

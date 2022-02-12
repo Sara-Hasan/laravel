@@ -17,62 +17,15 @@
 <section class="pick-course">
     <div class="container">
         <div class="courses">
+            @foreach ( $courses as $cours )
             <div class="course text-align">
                 <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
+                <h5> {{ $cours->name_course }}  </h5>
                 <p> Teacher TONY GARRETT </p>
                 <div class="line"></div>
-                <span> ​$199                               2300 </span>
+                <span>{{ $cours->houre_course }}                               {{ $cours->price_course }}$ </span>
             </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

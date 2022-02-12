@@ -62,7 +62,7 @@
                             <a href="{{ url('/') }}" class="nav-link"> Home  </a> 
                         </li>
                         <li> 
-                            <a href="{{ route('user.course') }}" class="nav-link">  Course </a>
+                            <a href="{{ route('user.courses') }}" class="nav-link">  Course </a>
                         </li>
                         <li> 
                             <a href="#service" class="nav-link">  Service </a>

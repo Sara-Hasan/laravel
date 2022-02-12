@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\Admin\UserAdmin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
-class CourseController extends Controller
+class UserAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +15,18 @@ class CourseController extends Controller
      */
     public function index()
     {
-        // $courses = DB::select('select * from courses where active = ?', [1]);
-        $courses = DB::table('courses')->get();
-        // $courses = Course::all();
- 
-        return view('dashboard.user.course', ['courses' => $courses]);
-        // return view ('dashboard.user.course', compact('courses'));
-        
+        $exam = User::all();
+        return view ('dashboard.admin.user', compact('exam'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('dashboard.user.course');
+        return view('dashboard.admin.user');
     }
 
     /**
@@ -42,10 +43,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(UserAdmin $userAdmin)
     {
         //
     }
@@ -53,10 +54,10 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(UserAdmin $userAdmin)
     {
         //
     }
@@ -65,10 +66,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, UserAdmin $userAdmin)
     {
         //
     }
@@ -76,10 +77,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(UserAdmin $userAdmin)
     {
         //
     }
