@@ -1,11 +1,54 @@
 @extends('dashboard.admin.masteradmin')
 @section('content')
+@if (isset( $_GET["do"])) 
+  <div class="row">
+    <div class="col-12">
 <div class="container-fluid py-4">
+  <div class="card z-index-0">
+    <div class="card-header pt-4">
+      <h5> Create User: </h5>
+    </div>
+    <div class="row px-xl-5 px-sm-4 px-3">
+    </div>
+    <div class="card-body">
+      <form action="{{ route('admin.user.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+        @if (Session::get('fail'))
+            <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+            </div>
+        @endif
+        @csrf
+        <div class="mb-3">
+          <input type="text" name='name' class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
+          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+        </div>
+        <div class="mb-3">
+          <input type="text" name='phone' class="form-control" placeholder="Phone" aria-label="Phone" aria-describedby="email-addon">
+          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+        </div>
+        <div class="mb-3">
+          <input type="email" name='email' class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+        </div>
+        <div class="mb-3">
+          <input type="password" name='password' class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Add User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+@else
     <div class="row">
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Authors table</h6>
+            <h6>Authors table </h6>
+            <a class="create" href="?do=add"><button type="button" class="btn btn-success left">Create User</button></a>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -20,15 +63,16 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ( $users as $user )
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
                         <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                          <img src="{{  $user->image }}" class="avatar avatar-sm me-3" alt="user1">
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">John Michael</h6>
-                          <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                          <h6 class="mb-0 text-sm">{{  $user->name }}</h6>
+                          <p class="text-xs text-secondary mb-0">{{  $user->email }}</p>
                         </div>
                       </div>
                     </td>
@@ -43,151 +87,11 @@
                       <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                     </td>
                     <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
+                      <a class="btn btn-link text-dark px-3 mb-0" href={{ route('admin.user.edit',$user->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                      <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="?do=add"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                          <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programator</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user3">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                          <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Executive</p>
-                      <p class="text-xs text-secondary mb-0">Projects</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Online</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user4">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Michael Levi</h6>
-                          <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programator</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Online</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user5">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Richard Gran</h6>
-                          <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Manager</p>
-                      <p class="text-xs text-secondary mb-0">Executive</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user6">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                          <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -195,6 +99,7 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-12">
         <div class="card mb-4">
@@ -247,171 +152,7 @@
                       </button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2">
-                        <div>
-                          <img src="../assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm rounded-circle me-2" alt="invision">
-                        </div>
-                        <div class="my-auto">
-                          <h6 class="mb-0 text-sm">Invision</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">$5,000</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">done</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <span class="me-2 text-xs font-weight-bold">100%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2">
-                        <div>
-                          <img src="../assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm rounded-circle me-2" alt="jira">
-                        </div>
-                        <div class="my-auto">
-                          <h6 class="mb-0 text-sm">Jira</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">$3,400</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">canceled</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <span class="me-2 text-xs font-weight-bold">30%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30" style="width: 30%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2">
-                        <div>
-                          <img src="../assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm rounded-circle me-2" alt="slack">
-                        </div>
-                        <div class="my-auto">
-                          <h6 class="mb-0 text-sm">Slack</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">$1,000</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">canceled</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <span class="me-2 text-xs font-weight-bold">0%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2">
-                        <div>
-                          <img src="../assets/img/small-logos/logo-webdev.svg" class="avatar avatar-sm rounded-circle me-2" alt="webdev">
-                        </div>
-                        <div class="my-auto">
-                          <h6 class="mb-0 text-sm">Webdev</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">$14,000</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">working</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <span class="me-2 text-xs font-weight-bold">80%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width: 80%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2">
-                        <div>
-                          <img src="../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm rounded-circle me-2" alt="xd">
-                        </div>
-                        <div class="my-auto">
-                          <h6 class="mb-0 text-sm">Adobe XD</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">$2,300</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">done</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <span class="me-2 text-xs font-weight-bold">100%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
+                  
                 </tbody>
               </table>
             </div>
@@ -426,7 +167,7 @@
             <div class="copyright text-center text-sm text-muted text-lg-start">
               © <script>
                 document.write(new Date().getFullYear())
-              </script>2022,
+              </script>,
               made with <i class="fa fa-heart" aria-hidden="true"></i> by
               <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
               for a better web.
@@ -452,4 +193,5 @@
       </div>
     </footer>
   </div>
+  @endif
 @endsection

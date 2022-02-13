@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\Admin\UserAdminController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -59,10 +59,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.admin.home')->name('home');
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
-        Route::resource('user', UserAdminController::class);
-        // Route::get('/useradmin', function () {
-        //     return view('dashboard.admin.user');
-        // });
+        Route::resource('/user', UserAdminController::class);
     });
 
 });
@@ -76,6 +73,5 @@ Route::prefix('instructor')->name('instructor.')->group(function(){
     Route::middleware(['auth:instructor','PreventBackHistory'])->group(function(){
         Route::view('/home','dashboard.instructor.home')->name('home');
         Route::post('logout',[InstructorController::class,'logout'])->name('logout');
-
     });
 });
