@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserAdminController extends Controller
 {
@@ -16,7 +17,8 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // $users = User::all();
+        $users = DB::table('users')->get();
         return view ('dashboard.admin.user', compact('users'));
     }
 
@@ -53,9 +55,9 @@ class UserAdminController extends Controller
         $save = $user->save();
 
         if( $save ){
-            return redirect()->back()->with('success','You are now registered successfully');
+            return redirect()->back()->with('success','Inserting successfully');
         }else{
-            return redirect()->back()->with('fail','Something went wrong, failed to register');
+            return redirect()->back()->with('fail','Something went wrong, failed to imserting');
         }
     }
 
@@ -76,10 +78,9 @@ class UserAdminController extends Controller
      * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $users)
+    public function edit(User $user)
     {
-        return view('dashboard.admin.edituser', compact('users'));
-        
+        return view('dashboard.admin.edituser', compact('user'));     
     }
 
     /**
@@ -89,20 +90,36 @@ class UserAdminController extends Controller
      * @param  \App\Models\Admin\UserAdmin  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $users)
+    public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'image_exam' => 'required|mimes:jpg,jpeg,png|max:5000',
-            'time' => 'required',
+            'name',
+            'phone'=>'min:10',
+            'email',
+            'password'=>'min:5',
+            'image' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);
-        $users->name = $request->name;
-        $users->description = $request->description;
-        $users->image_exam = $request->image_exam;
-        $users->time = $request->time;
+        if($request->image != ''){        
+            $path = public_path().'storage/';
+  
+        //code for remove old file
+        if($user->image != ''  && $user->image != null){
+                $file_old = $path.$user->image;
+                unlink($file_old);
+        }
+        //upload new file
+        $file = $request->image;
+        $filename = $file->getClientOriginalName();
+        $file->move($path, $filename);
 
-        $users->save();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->update(['file' => $filename]);
+    }
+        $user->save();
         return redirect()->route('admin.user.index')
         ->with('success','exam has been updated successfully.');
     }
@@ -113,9 +130,11 @@ class UserAdminController extends Controller
      * @param  \App\Models\Admin\User  $userAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $users)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.user.index')
+        ->with('success','exam has been deleted successfully');
     }
 
 }
