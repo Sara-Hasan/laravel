@@ -76,7 +76,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ( $user as $item )
+                  @foreach ( $subadmin as $item )
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">

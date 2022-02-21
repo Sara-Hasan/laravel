@@ -18,8 +18,8 @@ class UserAdminController extends Controller
     public function index()
     {
         // $users = User::all();
-        $users = DB::table('users')->get();
-        return view ('dashboard.admin.user', compact('users'));
+        $user = DB::table('users')->get();
+        return view ('dashboard.admin.user', compact('user'));
     }
 
     /**
@@ -29,7 +29,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.user', compact('users'));
+        return view('dashboard.admin.user', compact('user'));
     }
 
     /**
@@ -45,20 +45,27 @@ class UserAdminController extends Controller
             'phone'=>'required|min:10',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:5|max:30',
+            'image' => 'required|mimes:jpg,jpeg,png|max:5000'
         ]);
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $save = $user->save();
-
-        if( $save ){
-            return redirect()->back()->with('success','Inserting successfully');
-        }else{
-            return redirect()->back()->with('fail','Something went wrong, failed to imserting');
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $filename = time().'-'.$file->getClientOriginalName();
+            $file->move('storage', $filename);
+            $user = new User([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'image' => $filename,
+                'email' => $request->email,
+                'password' => $request->password
+            ]);
         }
+            // $user->name = $request->name;
+            // $user->phone = $request->phone;
+            // $user->email = $request->email;
+            // $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('admin.user.index')
+        ->with('success','Inserting successfully');
     }
 
     /**
@@ -92,21 +99,22 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // $user = User::find($id);
         $request->validate([
-            'name',
-            'phone'=>'min:10',
+            'name'=> 'required',
+            'phone',
             'email',
             'password'=>'min:5',
-            'image' => 'required|mimes:jpg,jpeg,png|max:5000',
+            'image' => 'mimes:jpg,jpeg,png|max:5000',
         ]);
         if($request->image != ''){        
             $path = public_path().'storage/';
   
-        //code for remove old file
-        if($user->image != ''  && $user->image != null){
-                $file_old = $path.$user->image;
-                unlink($file_old);
-        }
+            // code for remove old file
+            if($user->image != ''  && $user->image != null){
+                 $file_old = $path.$user->image;
+                 unlink($file_old);
+            }
         //upload new file
         $file = $request->image;
         $filename = $file->getClientOriginalName();
@@ -115,13 +123,15 @@ class UserAdminController extends Controller
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->email = $request->email;
+        $user->image = $request->image;
         $user->password = Hash::make($request->password);
 
+        //for update in table
         $user->update(['file' => $filename]);
     }
         $user->save();
         return redirect()->route('admin.user.index')
-        ->with('success','exam has been updated successfully.');
+        ->with('success','user has been updated successfully.');  
     }
 
     /**

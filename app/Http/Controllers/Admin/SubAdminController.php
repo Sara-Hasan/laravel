@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class InstractorAdminController extends Controller
+class SubAdminController extends Controller
 {
     public function index()
     {
-        // $users = User::all();
-        $instructors = DB::table('instructors')->get();
-        return view ('dashboard.admin.instructor', compact('instructors'));
+        $subadmin = DB::table('admins')->get();
+        return view ('dashboard.admin.subadmin', compact('subadmin'));
     }
 
     /**
@@ -22,6 +21,6 @@ class InstractorAdminController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.instructor', compact('instructors'));
+        return view('dashboard.admin.subadmin', compact('subadmin'));
     }
 }

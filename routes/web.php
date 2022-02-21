@@ -8,6 +8,9 @@ use App\Http\Controllers\Instructor\InstructorController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\Admin\CourseAdminController;
+use App\Http\Controllers\Admin\InstractorAdminController;
+use App\Http\Controllers\Admin\SubAdminController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -59,8 +62,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.admin.home')->name('home');
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
-        // Route::resource('user', UserAdminController::class);
-        Route::resource('user', 'App\Http\Controllers\Admin\UserAdminController');
+        Route::resource('user', UserAdminController::class);
+        Route::resource('course', CourseAdminController::class);
+        Route::resource('instr', InstractorAdminController::class);
+        Route::resource('subadmin', SubAdminController::class);
     });
 
 });

@@ -74,7 +74,7 @@
                             <a class="contact nav-link" href="{{ route('user.contactcreate') }}">  Contact us </a>
                         </li>
                         <li> 
-                            <a href="" class="nav-link">  Instructor </a>
+                            <a href="{{ route('instructor.login') }}" class="nav-link">  Instructor </a>
                         </li>
                         
                         <!-- Authentication Links -->

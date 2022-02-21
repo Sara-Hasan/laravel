@@ -41,7 +41,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
               <label for="img">Image Upload</label>
-              <input type="file" name="image_exam" id="img" required>
+              <input type="file" name="image" id="image">
           @error('image')
           <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
           @enderror
