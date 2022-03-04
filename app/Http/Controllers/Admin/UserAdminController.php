@@ -17,8 +17,8 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-        $user = DB::table('users')->get();
+        $user = User::all();
+        // $user = DB::table('users')->get();
         return view ('dashboard.admin.user', compact('user'));
     }
 
@@ -49,14 +49,14 @@ class UserAdminController extends Controller
         ]);
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $filename = time().'-'.$file->getClientOriginalName();
+            $filename = $file->getClientOriginalName();
             $file->move('storage', $filename);
             $user = new User([
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'image' => $filename,
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => Hash::make($request->password)
             ]);
         }
             // $user->name = $request->name;
@@ -99,39 +99,39 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // $user = User::find($id);
         $request->validate([
-            'name'=> 'required',
+            'name',
             'phone',
             'email',
             'password'=>'min:5',
             'image' => 'mimes:jpg,jpeg,png|max:5000',
         ]);
-        if($request->image != ''){        
-            $path = public_path().'storage/';
-  
-            // code for remove old file
-            if($user->image != ''  && $user->image != null){
-                 $file_old = $path.$user->image;
-                 unlink($file_old);
-            }
-        //upload new file
-        $file = $request->image;
-        $filename = $file->getClientOriginalName();
-        $file->move($path, $filename);
+     if($request->image != ''){        
+          $path = public_path().'\storage\\';
 
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->image = $request->image;
-        $user->password = Hash::make($request->password);
+          //code for remove old file
+          if($user->image != ''  && $user->image != null){
+               $file_old = $path.$user->image;
+               unlink($file_old);
+          }
 
-        //for update in table
-        $user->update(['file' => $filename]);
-    }
-        $user->save();
+          //upload new file
+          $file = $request->image;
+          $filename = $file->getClientOriginalName();
+          $file->move($path, $filename);
+         
+          $user->name = $request->name;
+          $user->phone = $request->phone;
+          $user->image = $filename;
+          $user->email = $request->email;
+          $user->password = $request->password;
+
+          //for update in table
+        //   $user->update(['file' => $filename]);
+     }
+     $user->save();
         return redirect()->route('admin.user.index')
-        ->with('success','user has been updated successfully.');  
+        ->with('success','user has been updated successfully.'); 
     }
 
     /**
@@ -144,7 +144,7 @@ class UserAdminController extends Controller
     {
         $user->delete();
         return redirect()->route('admin.user.index')
-        ->with('success','exam has been deleted successfully');
+        ->with('success','user has been deleted successfully');
     }
 
 }
