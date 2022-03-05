@@ -7,7 +7,8 @@
     <div class="card-header pt-4">  
       <h5> Update Instructor: 
           {{ $instructor->id }}
-      </h5>
+          {{ route('admin.instr.update', $instructor->id) }}
+        </h5>
     </div>
     <div class="card-body">
       <form action="{{ route('admin.instr.update', $instructor->id) }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >

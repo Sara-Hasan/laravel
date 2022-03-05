@@ -116,7 +116,6 @@ nav ul li a:hover {
         font-size: 22px;
         padding-left: 20px;
     }
-
     nav ul li a {
         font-size: 16px;
     }
@@ -126,7 +125,6 @@ nav ul li a:hover {
     .checkbtn {
         display: block;
     }
-
     ul {
         position: fixed;
         width: 100%;
@@ -137,7 +135,6 @@ nav ul li a:hover {
         text-align: center;
         transition: all 0.5s;
     }
-
     nav ul li {
         display: block;
         margin: 50px 0;
@@ -610,7 +607,7 @@ button[type="submit"]:hover {
 }
 /************* Footer **************/
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
 }
 @media (max-height: 800px) {

@@ -50,7 +50,7 @@
         </div>
     </div>
 </section>
-<header class="info">
+{{-- <header class="info">
     <div class="info-bg">
         <div class="container">
             <div class="row">
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>  
-</header>
+</header> --}}
 <section class="services">
     <div class="container">
         <div class="row">
@@ -148,7 +148,7 @@
     <div class="container">
         <h6 class="subheading text-align">Testimonial</h6>
         <h2>What Are Students Says</h2>
-            <div class="item d-flex">
+            <div class="item d-grid">
                 <div class="testimony-wrap">
                     <div class="text">
                         <p class="star">
