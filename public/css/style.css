@@ -387,7 +387,9 @@ header .head {
     padding-bottom: 3%;
 }
 .testimony-section .item {
-    gap: 2%;
+    place-items: center;
+    gap: 20px;
+    grid-template-columns: repeat(4,1fr);    
 }
 .testimony-wrap {
     display: block;
@@ -402,7 +404,7 @@ header .head {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     border-radius: 5px;
-    width: 30%;
+    width: 100%;
     padding: 2%;
 }
 .testimony-wrap .text .star {

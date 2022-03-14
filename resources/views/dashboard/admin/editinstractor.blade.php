@@ -5,8 +5,7 @@
 <div class="container-fluid py-4">
   <div class="card z-index-0">
     <div class="card-header pt-4">  
-      <h5> Update Instructor: 
-          {{-- {{ $instructor->id }} --}}
+      <h5> Update Instructor:         
           {{-- {{ route('admin.instr.update', $instructor->id) }} --}}
         </h5>
     </div>
