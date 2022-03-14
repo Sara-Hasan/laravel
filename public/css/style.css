@@ -49,7 +49,7 @@ section {
     padding: 100px 0;
 }
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 .d-flex {
     display: flex;
@@ -497,9 +497,26 @@ header .head {
     flex: 50%;
 }
 .flex-container {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     font-size: 30px;
-    text-align: center;
+    text-align: center; */
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.ftco-about .about-intro {
+    width: 100%;
+    position: relative;
+    z-index: 99;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 .heading-section {
     text-align: left;
@@ -535,11 +552,12 @@ header .head {
 .contact .contacting {
     box-shadow: 0px 2px 25px -13px rgb(0 0 0 / 26%);
     border-radius: 20px;
+    grid-template-columns: repeat(2,1fr);
 }
 .contact .bg-contact {
     background-image: url("https://images.pexels.com/photos/4492129/pexels-photo-4492129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
-    width: 33%;
+    width: 100%;
     text-align: left;
 }
 .contact .bg-opacity {
@@ -556,7 +574,8 @@ header .head {
     margin-top: 20px;
 }
 .contact .send {
-    padding-right: 40px;
+    padding: 40px;
+
 }
 .contact .flex-item-left {
     flex: 30%;

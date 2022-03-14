@@ -16,7 +16,7 @@
 
 <section class="contact img">
     <div class="container">
-        <div class="contacting flex-container d-grid">
+        <div class="contacting d-grid">
             <div class="bg-contact">
                 <div class="bg-opacity flex-item-left">
                     {{-- <div class="text "> --}}
