@@ -6,8 +6,8 @@
   <div class="card z-index-0">
     <div class="card-header pt-4">  
       <h5> Update Instructor: 
-          {{ $instructor->id }}
-          {{ route('admin.instr.update', $instructor->id) }}
+          {{-- {{ $instructor->id }} --}}
+          {{-- {{ route('admin.instr.update', $instructor->id) }} --}}
         </h5>
     </div>
     <div class="card-body">
