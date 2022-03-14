@@ -50,7 +50,7 @@ class UserAdminController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->image;
             $filename = $file->getClientOriginalName();
-            $file->move('storage', $filename);
+            $file->move('./code/public/storage', $filename);
             $user = new User([
                 'name' => $request->name,
                 'phone' => $request->phone,

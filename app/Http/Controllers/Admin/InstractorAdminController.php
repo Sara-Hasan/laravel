@@ -99,6 +99,7 @@ class InstractorAdminController extends Controller
         return redirect()->route('admin.instr.index')
         ->with('success','instructor has been updated successfully.'); 
     }
+    
     public function destroy(Instructor $instructor)
     {
         $instructor->delete();
