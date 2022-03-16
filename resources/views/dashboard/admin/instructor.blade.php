@@ -97,10 +97,10 @@
                       <span class="text-secondary text-xs font-weight-bold">{{ $item->created_at }}</span>
                     </td>
                     <td class="align-middle">
-                      <a class="btn btn-outline-primary btn-sm mb-0" href={{ route('admin.instr.edit',$item->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                      <a class="btn btn-outline-primary btn-sm mb-0" href={{ route('admin.tech.edit',$item->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                     </td>
                       <td class="align-middle">
-                      <form action="{{ route('admin.instr.destroy',$item->id) }}" method="post">
+                      <form action="{{ route('admin.tech.destroy',$item->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-primary btn-sm mb-0">

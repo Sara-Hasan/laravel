@@ -320,10 +320,9 @@ header .head {
 
 /************* Services **************/
 
-.services .row {
+.services .gh {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2%;
 }
 .services .col .image {
     box-shadow: 0px 10px 23px -8px rgb(0 0 0 / 11%);
@@ -333,10 +332,11 @@ header .head {
 }
 .services .row-sec {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
     margin: 6% 0;
 }
+
 .services .col-sec {
     background-color: #f5f7fa;
     height: 26em;

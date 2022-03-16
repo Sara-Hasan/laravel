@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        return view('home',compact('courses'));
+    }
+    public function course()
+    {
+        // $courses = Course::all();
+        $courses = DB::table('courses')->get();
+        return view('welcome',compact('courses'));
     }
 }

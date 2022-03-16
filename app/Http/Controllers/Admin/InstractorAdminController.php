@@ -52,18 +52,19 @@ class InstractorAdminController extends Controller
             // $user->email = $request->email;
             // $user->password = Hash::make($request->password);
         $instructor->save();
-        return redirect()->route('admin.instr.index')
+        return redirect()->route('admin.tech.index')
         ->with('success','Inserting successfully');
     }
     public function show(Instructor $instructors)
     {
         return view('dashboard.admin.editinstractor', compact('instructors'));
     }
-    public function edit(Instructor $instructor)
+    public function edit($instructor_id)
     {
+        $instructor= Instructor::find($instructor_id);
         return view('dashboard.admin.editinstractor', compact('instructor'));     
     }
-    public function update(Request $request, Instructor $instructor)
+    public function update(Request $request, $instructor_id)
     {
         $request->validate([
             'name',
@@ -72,10 +73,13 @@ class InstractorAdminController extends Controller
             'password'=>'min:5',
             'image' => 'mimes:jpg,jpeg,png|max:5000',
         ]);
+        $instructor= Instructor::find($instructor_id);
+        
+        // $instructors = Instructor::find($id);
      if($request->image != ''){        
           $path = public_path().'\storage\\';
 
-          //code for remove old file
+        //   //code for remove old file
           if($instructor->image != ''  && $instructor->image != null){
                $file_old = $path.$instructor->image;
                unlink($file_old);
@@ -88,22 +92,25 @@ class InstractorAdminController extends Controller
          
           $instructor->name = $request->name;
           $instructor->phone = $request->phone;
-          $instructor->image = $filename;
+         $instructor->image = $filename;
           $instructor->email = $request->email;
           $instructor->password = $request->password;
+        // $instructor = $request->all();
+        // var_dump($instructors);
 
           //for update in table
-        //   $user->update(['file' => $filename]);
+          $instructor->update(['file' => $filename]);
      }
-     $instructor->save();
-        return redirect()->route('admin.instr.index')
+     $instructor->update();
+        return redirect()->route('admin.tech.index')
         ->with('success','instructor has been updated successfully.'); 
     }
     
-    public function destroy(Instructor $instructor)
+    public function destroy(Instructor $instructor_id)
     {
-        $instructor->delete();
-        return redirect()->route('admin.instr.index')
+        // $instructors->delete();
+        DB::delete('delete from instructors where id = ?',[$instructor_id]);
+        return redirect()->route('admin.tech.index')
         ->with('success','instructor has been deleted successfully');
     }
 

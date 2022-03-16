@@ -28,7 +28,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <script
@@ -43,7 +43,7 @@
             <div class="container">
                 <label class="logo">
                     <a href="{{ url('/') }}">
-                        Arabiaمرحباً 
+                        <img src="../img/arabia-removebg-preview.png" style="width:150px; height:150px;" alt="">
                      </a> 
                 </label> 
                 {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -67,9 +67,9 @@
                         <li> 
                             <a href="{{ route('user.courses') }}" class="nav-link">  Course </a>
                         </li>
-                        <li> 
+                        {{-- <li> 
                             <a href="#service" class="nav-link">  Service </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('user.about') }}" class="nav-link"> About us  </a> 
                         </li>
@@ -123,13 +123,11 @@
 
         <footer class="footer-distributed">
 			<div class="footer-left">
-          <img src="img/logo.png">
+          <img src="img/arabia.png" style="width:70px; height:70px; ">
 				<h3>About<span>Arabia</span></h3>
 
 				<p class="footer-links">
 					<a href="{{ url('/') }}">Home</a>
-					|
-					<a href="{{ route('user.home') }}">Blog</a>
 					|
 					<a href="{{ url('/') }}">About</a>
 					|

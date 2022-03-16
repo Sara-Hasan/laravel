@@ -31,6 +31,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'course'])->name('/');
 
  Route::prefix('user')->name('user.')->group(function(){
 
@@ -64,7 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
         Route::resource('user', UserAdminController::class);
         Route::resource('course', CourseAdminController::class);
-        Route::resource('instr', InstractorAdminController::class);
+        Route::resource('tech', InstractorAdminController::class);
         Route::resource('subadmin', SubAdminController::class);
     });
 

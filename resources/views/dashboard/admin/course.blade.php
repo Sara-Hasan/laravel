@@ -51,9 +51,18 @@
                     </div>
                   </td>
                   <td class="align-middle">
-                    <button class="btn btn-link text-secondary mb-0">
-                      <i class="fa fa-ellipsis-v text-xs" aria-hidden="true"></i>
-                    </button>
+                    <a class="btn btn-outline-primary btn-sm mb-0" href={{ route('admin.user.edit',$item->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                  </td>
+                    <td class="align-middle">
+                    <form action="{{ route('admin.user.destroy',$item->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                      {{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0"> --}}
+                        <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete
+                      {{-- </a> --}}
+                      </button>
+                    </form>
                   </td>
                 </tr>
               @endforeach

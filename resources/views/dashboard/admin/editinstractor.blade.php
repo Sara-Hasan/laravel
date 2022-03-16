@@ -10,7 +10,7 @@
         </h5>
     </div>
     <div class="card-body">
-      <form action="{{ route('admin.instr.update', $instructor->id) }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+      <form action="{{ route('admin.tech.update', $instructor->id ) }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
         @if (Session::get('fail'))
             <div class="alert alert-danger">
                 {{ Session::get('fail') }}

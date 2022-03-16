@@ -18,6 +18,9 @@
     <div class="container">
         <h4 class="text-align"> ​START LEARNING TODAY </h4>
         <h1> Pick Your Course </h1>
+        {{-- @foreach ($courses as $cours)
+        {{ $cours->name_course }}
+        @endforeach --}}
         <div class="courses">
             <div class="course text-align">
                 <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
@@ -25,28 +28,7 @@
                 <p> Teacher TONY GARRETT </p>
                 <div class="line"></div>
                 <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
-            <div class="course text-align">
-                <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
-                <p> Teacher TONY GARRETT </p>
-                <div class="line"></div>
-                <span> ​$199                               2300 </span>
-            </div>
+            </div> 
         </div>
     </div>
 </section>
@@ -104,7 +86,7 @@
 </header> --}}
 <section class="services">
     <div class="container">
-        <div class="row">
+        <div class="gh">
             <div class="col">
                {{-- <img src="../img/tg-min.jpg" alt="" style="width: 20em; height: 28em;">  --}}
                <div class="image" style="background-image: url('../img/tg-min.jpg');"></div>
@@ -115,6 +97,9 @@
              <div class="col">
                <div class="image" style="background-image: url('../img/rtt.jpg');"></div>
              </div>
+             <div class="col">
+                <div class="image" style="background-image: url('../img/rtt.jpg');"></div>
+              </div>
         </div>
         <div class="row-sec">
             <div class="col-sec text-align">
@@ -134,6 +119,13 @@
              <div class="col-sec text-align">
                 <div class="d-flex"><i class="fas fa-question-circle"></i></div>
                 <h5> Support </h5>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                    cillum dolore eu fugiat nulla pariatur</p>   
+                <span> <a href="#"> More </a> </span>                       
+            </div>
+            <div class="col-sec text-align">
+                <div class="d-flex"><i class="fas fa-certificate"></i></div>
+                <h5> Get Certified </h5>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse 
                     cillum dolore eu fugiat nulla pariatur</p>   
                 <span> <a href="#"> More </a> </span>                       
