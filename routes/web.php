@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\CourseAdminController;
 use App\Http\Controllers\Admin\InstractorAdminController;
 use App\Http\Controllers\Admin\SubAdminController;
+use App\Http\Controllers\User\SinglepageController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -45,8 +46,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
         Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        Route::resource('singlepage', SinglepageController::class);
+        Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
+        Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
+        Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
         // Route::resource('courses', CourseController::class);
-
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){

@@ -7,6 +7,8 @@
     border-radius: 40px;
     background-color: #fff;
     height: 500px;
+    width: 90%;
+    margin: auto;
 }
 .sign {
     height: 800px;
@@ -43,7 +45,7 @@
     margin-top: 20px;
 }
 .login .send {
-    padding-right: 40px;
+    padding: 40px;
 }
 .contacting .send {
     background-color: #fff;

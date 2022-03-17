@@ -98,6 +98,10 @@ nav ul li a:hover {
     text-decoration: underline;
     transition: 0.5s;
 }
+label.logo img {
+    width: 150px;
+    height: 150px;
+}
 .checkbtn {
     font-size: 30px;
     color: #000;
@@ -821,3 +825,6 @@ footer ul li{
 footer .icon{
     color: #F1C50E;
 } */
+section .con {
+    height: 500px;
+}

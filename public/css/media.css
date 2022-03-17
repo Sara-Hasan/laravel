@@ -64,6 +64,9 @@
         grid-template-columns: auto;
         align-content: space-evenly;
     }
+    .services .gh {
+        display: none;
+    }
 }
 @media (max-width: 858px) {
     .services .row {
@@ -93,6 +96,9 @@
     label.logo img {
         width: 80px;
         height: 81px;
+    }
+    .login .logning {
+
     }
 }
 @media (max-width: 767.98px){

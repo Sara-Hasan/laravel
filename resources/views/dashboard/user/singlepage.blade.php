@@ -9,7 +9,7 @@
                     Course Lists
                 <i class="fa fa-chevron-right"></i></span>
             </p>
-      user.singlepage      <h2> Course Lists </h2>
+            <h2> Course Lists </h2>
         </div>
     </div>  
 </header>
@@ -17,17 +17,13 @@
 <section class="pick-course">
     <div class="container">
             <div class="courses">
-                @foreach ( $courses as $cours )
-                <a href="{{ route('user.singlepage2', $cours->id) }}">
                 <div class="course text-align">
                     <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                    <h5> {{ $cours->name_course }}  </h5>
+                    <h5> {{ $courses->name_course }}  </h5>
                     <p> Teacher TONY GARRETT </p>
                     <div class="line"></div>
-                    <span>{{ $cours->houre_course }}                               {{ $cours->price_course }}$ </span>
+                    <span>{{ $courses->houre_course }}                               {{ $courses->price_course }}$ </span>
                 </div>
-            </a>
-                @endforeach
             </div>
     </div>
 </section>

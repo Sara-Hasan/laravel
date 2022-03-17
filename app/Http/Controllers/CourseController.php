@@ -27,6 +27,7 @@ class CourseController extends Controller
     {
         return view('dashboard.user.course');
     }
+    
 
     /**
      * Store a newly created resource in storage.
