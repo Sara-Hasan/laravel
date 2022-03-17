@@ -50,6 +50,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
         Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
         Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
+        Route::get('/book', [BookingController::class, 'index'])->name('book');
         // Route::resource('courses', CourseController::class);
     });
         

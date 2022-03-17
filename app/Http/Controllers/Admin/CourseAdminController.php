@@ -22,88 +22,86 @@ class CourseAdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'phone'=>'required|min:10',
-            'email'=>'required|email|unique:users,email',
-            'password'=>'required|min:5|max:30',
-            'image' => 'required|mimes:jpg,jpeg,png|max:5000'
+            'name_course'=>'required',
+            'desc_course'=>'required',
+            'houre_course'=>'required',
+            'price_course'=>'required',
+            'image_course' => 'required|mimes:jpg,jpeg,png|max:5000'
         ]);
-        if ($request->hasFile('image')) {
-            $file = $request->image;
+        if ($request->hasFile('image_course')) {
+            $file = $request->image_course;
             $filename = $file->getClientOriginalName();
             $file->move('storage', $filename);
-            $instructor = new Course([
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'image' => $filename,
-                'email' => $request->email,
-                'password' => Hash::make($request->password)
+            $courses = new Course([
+                'name_course' => $request->name_course,
+                'desc_course' => $request->desc_course,
+                'image_course' => $filename,
+                'houre_course' => $request->houre_course,
+                'price_course' => $request->price_course
             ]);
         }
-            // $user->name = $request->name;
-            // $user->phone = $request->phone;
-            // $user->email = $request->email;
-            // $user->password = Hash::make($request->password);
-        $instructor->save();
-        return redirect()->route('admin.tech.index')
+        $courses->save();
+        return redirect()->route('admin.course.index')
         ->with('success','Inserting successfully');
     }
-    public function show(Course $instructors)
+    public function show(Course $courses)
     {
-        return view('dashboard.admin.editinstractor', compact('instructors'));
+        return view('dashboard.admin.editcourse', compact('courses'));
     }
-    public function edit($instructor_id)
+    public function edit($courses_id)
     {
-        $instructor= Course::find($instructor_id);
-        return view('dashboard.admin.editinstractor', compact('instructor'));     
+        $courses= Course::find($courses_id);
+        return view('dashboard.admin.editcourse', compact('courses'));     
     }
-    public function update(Request $request, $instructor_id)
+    public function update(Request $request, $courses_id)
     {
         $request->validate([
-            'name',
-            'phone',
-            'email',
-            'password'=>'min:5',
-            'image' => 'mimes:jpg,jpeg,png|max:5000',
+            'name_course'=>'required',
+            'desc_course'=>'required',
+            'houre_course'=>'required',
+            'price_course'=>'required',
+            'image_course' => 'required|mimes:jpg,jpeg,png|max:5000'
         ]);
-        $instructor= Course::find($instructor_id);
+        $courses= Course::find($courses_id);
         
         // $instructors = Instructor::find($id);
-     if($request->image != ''){        
+     if($request->image_course != ''){        
           $path = public_path().'\storage\\';
 
         //   //code for remove old file
-          if($instructor->image != ''  && $instructor->image != null){
-               $file_old = $path.$instructor->image;
+          if($courses->image_course != ''  && $courses->image_course != null){
+               $file_old = $path.$courses->image_course;
                unlink($file_old);
           }
 
           //upload new file
-          $file = $request->image;
+          $file = $request->image_course;
           $filename = $file->getClientOriginalName();
           $file->move($path, $filename);
          
-          $instructor->name = $request->name;
-          $instructor->phone = $request->phone;
-         $instructor->image = $filename;
-          $instructor->email = $request->email;
-          $instructor->password = $request->password;
+          $courses->name_course = $request->name_course;
+          $courses->desc_course = $request->desc_course;
+         $courses->image_course = $filename;
+          $courses->houre_course = $request->houre_course;
+          $courses->price_course = $request->price_course;
         // $instructor = $request->all();
         // var_dump($instructors);
 
           //for update in table
-          $instructor->update(['file' => $filename]);
+          $courses->update(['file' => $filename]);
      }
-     $instructor->update();
-        return redirect()->route('admin.tech.index')
+     $courses->update();
+        return redirect()->route('admin.course.index')
         ->with('success','instructor has been updated successfully.'); 
     }
     
-    public function destroy(Course $instructor)
+    public function destroy(Course $courses_id)
     {
-        $instructor->delete();
-        return redirect()->route('admin.tech.index')
-        ->with('success','instructor has been deleted successfully');
+        // $instructors->delete();
+        DB::delete('delete from courses where id = ?',[$courses_id]);
+        return redirect()->route('admin.course.index')
+        ->with('success','course has been deleted successfully');
     }
+
 
 }
