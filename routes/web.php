@@ -52,11 +52,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
         Route::get('/book', [BookingController::class, 'index'])->name('book');
         // Route::resource('courses', CourseController::class);
-        Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-        Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-        Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-        Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-        Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+        Route::get('cart', [CourseController::class, 'cart'])->name('cart');
+        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('add.to.cart');
+        Route::patch('update-cart', [CourseController::class, 'update'])->name('update.cart');
+        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('remove.from.cart');
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){

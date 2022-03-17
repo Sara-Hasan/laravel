@@ -23,6 +23,7 @@
                     <p> Teacher TONY GARRETT </p>
                     <div class="line"></div>
                     <span>{{ $courses->houre_course }}                               {{ $courses->price_course }}$ </span>
+                    <p class="btn-holder"><a href="{{ route('user.add.to.cart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                 </div>
             </div>
     </div>

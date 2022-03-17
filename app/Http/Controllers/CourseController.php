@@ -15,73 +15,117 @@ class CourseController extends Controller
      */
     public function index()
     {
-        // $courses = DB::select('select * from courses where active = ?', [1]);
         $courses = DB::table('courses')->get();
-        // $courses = Course::all();
- 
         return view('dashboard.user.course', ['courses' => $courses]);
-        // return view ('dashboard.user.course', compact('courses'));
         
     }
     public function create()
     {
         return view('dashboard.user.course');
     }
+    public function cart()
+
+    {
+        return view('cart');
+    }
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function addToCart($id)
+    {
+        $product = Course::findOrFail($id);
+        $cart = session()->get('cart', []);
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+
+            $cart[$id] = [
+
+                "name_course" => $product->name_course,
+
+                "quantity" => 1,
+
+                "price_course" => $product->price_course,
+
+                "houre_course" => $product->houre_course,
+
+                "image_course" => $product->image_course
+
+            ];
+
+        }
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function update(Request $request)
+
+    {
+
+        if($request->id && $request->quantity){
+
+            $cart = session()->get('cart');
+
+            $cart[$request->id]["quantity"] = $request->quantity;
+
+            session()->put('cart', $cart);
+
+            session()->flash('success', 'Cart updated successfully');
+
+        }
+
+    }
+
+  
+
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function remove(Request $request)
+
+    {
+
+        if($request->id) {
+
+            $cart = session()->get('cart');
+
+            if(isset($cart[$request->id])) {
+
+                unset($cart[$request->id]);
+
+                session()->put('cart', $cart);
+
+            }
+
+            session()->flash('success', 'Product removed successfully');
+
+        }
+
+    }
+
     
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Course $course)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Course $course)
-    {
-        //
-    }
 }

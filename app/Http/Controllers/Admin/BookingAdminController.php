@@ -4,66 +4,112 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\Course;
 class BookingAdminController extends Controller
 {
-    public function cartList()
+    public function cart()
+
     {
-        $cartItems = Booking::getContent();
-        // dd($cartItems);
-        return view('cart', compact('cartItems'));
+
+        return view('cart');
+
+    }
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function addToCart($id)
+    {
+        $product = Course::findOrFail($id);
+        $cart = session()->get('cart', []);
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+
+            $cart[$id] = [
+
+                "name_course" => $product->name_course,
+
+                "quantity" => 1,
+
+                "price_course" => $product->price_course,
+
+                "houre_course" => $product->houre_course,
+
+                "image_course" => $product->image_course
+
+            ];
+
+        }
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function update(Request $request)
+
+    {
+
+        if($request->id && $request->quantity){
+
+            $cart = session()->get('cart');
+
+            $cart[$request->id]["quantity"] = $request->quantity;
+
+            session()->put('cart', $cart);
+
+            session()->flash('success', 'Cart updated successfully');
+
+        }
+
     }
 
+  
 
-    public function addToCart(Request $request)
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function remove(Request $request)
+
     {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => array(
-                'image' => $request->image,
-            )
-        ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        return redirect()->route('cart.list');
+        if($request->id) {
+
+            $cart = session()->get('cart');
+
+            if(isset($cart[$request->id])) {
+
+                unset($cart[$request->id]);
+
+                session()->put('cart', $cart);
+
+            }
+
+            session()->flash('success', 'Product removed successfully');
+
+        }
+
     }
-
-    public function updateCart(Request $request)
-    {
-        \Cart::update(
-            $request->id,
-            [
-                'quantity' => [
-                    'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
-
-        session()->flash('success', 'Item Cart is Updated Successfully !');
-
-        return redirect()->route('cart.list');
-    }
-
-    public function removeCart(Request $request)
-    {
-        \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return redirect()->route('cart.list');
-    }
-
-    public function clearAllCart()
-    {
-        \Cart::clear();
-
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-
-        return redirect()->route('cart.list');
-    }
-
 }
