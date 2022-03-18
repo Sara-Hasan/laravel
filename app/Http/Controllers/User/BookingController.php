@@ -12,8 +12,12 @@ class BookingController extends Controller
 {
     public function index()
     {
-        // $booking = DB::table('booking')->get();
-        return view ('dashboard.user.booking');
+        $booking = DB::table('bookings')->get();
+        return view ('dashboard.user.checkout',compact('booking'));
+    }
+    public function create()
+    {
+        return view('dashboard.user.checkout');
     }
     public function store(Request $request)
     {
@@ -23,16 +27,17 @@ class BookingController extends Controller
             'Name_on_card'=>'required',
             'Cvv'=>'required',
         ]);
-            $courses = new Booking([
+            $booking = new Booking([
                 'Card_Number' => $request->Card_Number,
                 'Expiration' => $request->Expiration,
                 'Name_on_card' => $request->Name_on_card,
                 'Cvv' => $request->Cvv,
                 'user_id' => Auth::user()->id,
-                'course_id' => 
+                'course_id' => $request->course_id,
+                'total' => $request->total,
             ]);
-        $courses->save();
-        return redirect()->route('admin.course.index')
+        $booking->save();
+        return redirect()->route('user.mycourse')
         ->with('success','Inserting successfully');
     }
 }

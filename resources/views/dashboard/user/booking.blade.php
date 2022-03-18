@@ -27,7 +27,7 @@
               <div class="col-lg-6 px-5 py-4">
 
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Courses</h3>
-                @php $total = 0 @endphp
+                @php $total = 0;  $id = 0 @endphp
 
                 @if(session('cart'))
         
@@ -67,35 +67,49 @@
 
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
 
-                <form class="mb-5">
-
+                <form action="{{ route('user.mycourse1') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+                  @if (Session::get('fail'))
+                      <div class="alert alert-danger">
+                          {{ Session::get('fail') }}
+                      </div>
+                  @endif
+                  @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                <p>{{ $message }}</p>
+                </div>
+               @endif
+                  @csrf
                   <div class="form-outline mb-5">
-                    <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                    <input type="text" class="form-control form-control-lg" siez="17"
                       placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
                     <label class="form-label" for="typeText">Card Number</label>
+                    <span class="text-danger">@error('Card_Number'){{ $message }}@enderror</span>
                   </div>
 
                   <div class="form-outline mb-5">
                     <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
                       placeholder="Enter your name on card" name="Name_on_card"/>
                     <label class="form-label" for="typeName">Name on card</label>
+                    <span class="text-danger">@error('Name_on_card'){{ $message }}@enderror</span>
                   </div>
 
                   <div class="row">
                     <div class="col-md-6 mb-5">
                       <div class="form-outline">
                         <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="01/22"
-                          size="7" id="exp" minlength="7" maxlength="7" name="Expiration"/>
+                          size="7" id="exp" name="Expiration"/>
                         <label class="form-label" for="typeExp">Expiration</label>
+                        <span class="text-danger">@error('Expiration'){{ $message }}@enderror</span>
                       </div>
                     </div>
                     <div class="col-md-6 mb-5">
                       <div class="form-outline">
                         <input type="password" id="typeText" class="form-control form-control-lg"
-                          value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                          <input type="password" id="typeText" class="form-control form-control-lg" value="{{ $details['id'] }}"/>
-                          <input type="text" id="typeText" class="form-control form-control-lg" value="{{ $total }}"/>
+                           size="1" minlength="3" maxlength="3" name="Cvv"/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}"/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}"/>
                         <label class="form-label" for="typeText">Cvv</label>
+                        <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
                       </div>
                     </div>
                   </div>
@@ -103,7 +117,7 @@
                   <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
                       href="#!">obcaecati sapiente</a>.</p>
 
-                  <button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
+                  <button type="submit" class="btn btn-primary btn-block btn-lg">Buy now</button>
 
                   <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
                     <a href="{{ url('/') }}"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>

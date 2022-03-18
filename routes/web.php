@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\CourseAdminController;
 use App\Http\Controllers\Admin\InstractorAdminController;
 use App\Http\Controllers\Admin\SubAdminController;
+use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\SinglepageController;
+use App\Models\Booking;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -61,6 +63,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.user.home')->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
+        Route::post('/check', [UserController::class, 'check'])->name('check'); 
+        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
+        Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        Route::resource('singlepage', SinglepageController::class);
+        Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
+        Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
+        Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
+        Route::get('/book', [BookingController::class, 'index'])->name('book');
+        // Route::resource('courses', CourseController::class);
+        Route::get('cart', [CourseController::class, 'cart'])->name('cart');
+        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
+        Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
+        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
+        Route::get('mycourses', [BookingController::class, 'index'])->name('mycourses');
+        Route::get('mycourse', [BookingController::class, 'create'])->name('mycourse');
+        Route::post('mycourse1', [BookingController::class, 'store'])->name('mycourse1');
     });
  
 });
