@@ -37,7 +37,7 @@ class BookingController extends Controller
                 'total' => $request->total,
             ]);
         $booking->save();
-        return redirect()->route('user.mycourse')
+        return redirect()->route('user.mycourse.index')
         ->with('success','Inserting successfully');
     }
 }

@@ -76,9 +76,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
         Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
         Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
-        Route::get('mycourses', [BookingController::class, 'index'])->name('mycourses');
-        Route::get('mycourse', [BookingController::class, 'create'])->name('mycourse');
-        Route::post('mycourse1', [BookingController::class, 'store'])->name('mycourse1');
+        Route::resource('mycourse', BookingController::class);
+        // Route::get('mycourses', [BookingController::class, 'index'])->name('mycourses');
+        // Route::get('mycourse', [BookingController::class, 'create'])->name('mycourse');
+        // Route::post('mycourse1', [BookingController::class, 'store'])->name('mycourse1');
     });
  
 });

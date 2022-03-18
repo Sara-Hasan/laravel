@@ -14,14 +14,15 @@
     </div>  
 </header>
 
-
+<section class="h-100 h-custom" style="background-color: #eee;">
+    <div class="container">
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Position</th>
+        <th>Name_on_card</th>
+        <th>Email</th>
+        <th>Course Name</th>
+        <th>Total</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -125,5 +126,6 @@
       </tr>
     </tbody>
   </table>
-
+</div>
+</section>
 @endsection

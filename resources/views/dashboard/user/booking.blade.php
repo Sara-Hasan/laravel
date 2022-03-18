@@ -67,7 +67,7 @@
 
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
 
-                <form action="{{ route('user.mycourse1') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+                <form action="{{ route('user.mycourse.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
                   @if (Session::get('fail'))
                       <div class="alert alert-danger">
                           {{ Session::get('fail') }}
@@ -80,8 +80,8 @@
                @endif
                   @csrf
                   <div class="form-outline mb-5">
-                    <input type="text" class="form-control form-control-lg" siez="17"
-                      placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
+                    <input type="text" class="form-control form-control-lg" 
+                     placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
                     <label class="form-label" for="typeText">Card Number</label>
                     <span class="text-danger">@error('Card_Number'){{ $message }}@enderror</span>
                   </div>
