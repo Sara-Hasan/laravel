@@ -20,7 +20,7 @@
                 @foreach ( $courses as $cours )
                 <a href="{{ route('user.singlepage2', $cours->id) }}">
                 <div class="course text-align">
-                    <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
+                    <div class="picture" style="background-image: url('/storage/{{ $cours->image_course }}');"></div>
                     <h5> {{ $cours->name_course }}  </h5>
                     <p> Teacher TONY GARRETT </p>
                     <div class="line"></div>

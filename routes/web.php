@@ -53,9 +53,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('/book', [BookingController::class, 'index'])->name('book');
         // Route::resource('courses', CourseController::class);
         Route::get('cart', [CourseController::class, 'cart'])->name('cart');
-        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('add.to.cart');
-        Route::patch('update-cart', [CourseController::class, 'update'])->name('update.cart');
-        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('remove.from.cart');
+        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
+        Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
+        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){

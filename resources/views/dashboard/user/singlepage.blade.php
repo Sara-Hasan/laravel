@@ -18,12 +18,13 @@
     <div class="container">
             <div class="courses">
                 <div class="course text-align">
-                    <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
+                    <div class="picture" style="background-image: url('/storage/{{ $courses->image_course }}');"></div>
+                    {{-- <img src="/storage/{{ $courses->image_course }}" alt=""> --}}
                     <h5> {{ $courses->name_course }}  </h5>
                     <p> Teacher TONY GARRETT </p>
                     <div class="line"></div>
                     <span>{{ $courses->houre_course }}                               {{ $courses->price_course }}$ </span>
-                    <p class="btn-holder"><a href="{{ route('user.add.to.cart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                    <p class="btn-holder"><a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                 </div>
             </div>
     </div>

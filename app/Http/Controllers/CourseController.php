@@ -26,7 +26,7 @@ class CourseController extends Controller
     public function cart()
 
     {
-        return view('cart');
+        return view('dashboard.user.booking');
     }
     /**
 
@@ -63,7 +63,7 @@ class CourseController extends Controller
         }
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('user.cart')->with('success', 'Product added to cart successfully!');
     }
     /**
 

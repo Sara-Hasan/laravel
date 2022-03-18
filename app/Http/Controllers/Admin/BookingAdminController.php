@@ -10,9 +10,7 @@ class BookingAdminController extends Controller
     public function cart()
 
     {
-
-        return view('cart');
-
+        return view('dashboard.user.booking');
     }
     /**
 
@@ -49,7 +47,7 @@ class BookingAdminController extends Controller
         }
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('user.cart')->back()->with('success', 'Product added to cart successfully!');
     }
     /**
 

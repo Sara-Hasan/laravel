@@ -14,168 +14,147 @@
     </div>  
 </header>
 
-<section class="vh-100" style="background-color: #fdccbc;">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col">
-          <p><span class="h2">Shopping Cart </span><span class="h4">(1 item in your cart)</span></p>
-  
-          <div class="card mb-4">
-            <div class="card-body p-4">
-  
-              <div class="row align-items-center">
-                <div class="col-md-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp" class="img-fluid" alt="Generic placeholder image">
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                  <div>
-                    <p class="small text-muted mb-4 pb-2">Name</p>
-                    <p class="lead fw-normal mb-0">iPad Air</p>
+
+
+<section class="h-100 h-custom" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card shopping-cart" style="border-radius: 15px;">
+          <div class="card-body text-black">
+
+            <div class="row">
+              <div class="col-lg-6 px-5 py-4">
+
+                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Courses</h3>
+                @php $total = 0 @endphp
+
+                @if(session('cart'))
+        
+                    @foreach(session('cart') as $id => $details)
+        
+                        @php $total += $details['price_course'] * $details['quantity'] @endphp
+                <div class="d-flex align-items-center mb-5 up" data-id="{{ $id }}">
+                  <div class="flex-shrink-0">
+                    <img src="{{ $details['image_course'] }}"
+                      class="img-fluid" style="width: 150px;" alt="image of course">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <a href="#!" class="float-end text-black remove-from-cart"><i class="fa-solid fa-x"></i></a>
+                  {{-- <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa-solid fa-xmark-large"></i></button> --}}
+                    <h5 class="text-primary">{{ $details['name_course'] }}</h5>
+                    <div class="d-flex align-items-center">
+                      <p class="fw-bold mb-0 me-5 pe-3">${{ $details['price_course'] }}</p>
+                      <div class="def-number-input number-input safari_only">
+                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                  <div>
-                    <p class="small text-muted mb-4 pb-2">Color</p>
-                    <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i> pink rose</p>
-                  </div>
+                @endforeach
+
+              @endif
+
+                <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
+                <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
+                  <h5 class="fw-bold mb-0">Total:</h5>
+                  <h5 class="fw-bold mb-0">${{ $total }}</h5>
+                  {{-- ${{ $details['price_course'] * $details['quantity'] }} --}}
                 </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                  <div>
-                    <p class="small text-muted mb-4 pb-2">Quantity</p>
-                    <p class="lead fw-normal mb-0">1</p>
-                  </div>
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                  <div>
-                    <p class="small text-muted mb-4 pb-2">Price</p>
-                    <p class="lead fw-normal mb-0">$799</p>
-                  </div>
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                  <div>
-                    <p class="small text-muted mb-4 pb-2">Total</p>
-                    <p class="lead fw-normal mb-0">$799</p>
-                  </div>
-                </div>
+
               </div>
-  
-            </div>
-          </div>
-  
-          <div class="card mb-5">
-            <div class="card-body p-4">
-  
-              <div class="float-end">
-                <p class="mb-0 me-5 d-flex align-items-center">
-                  <span class="small text-muted me-2">Order total:</span> <span class="lead fw-normal">$799</span>
-                </p>
+              <div class="col-lg-6 px-5 py-4">
+
+                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
+
+                <form class="mb-5">
+
+                  <div class="form-outline mb-5">
+                    <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                      value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                    <label class="form-label" for="typeText">Card Number</label>
+                  </div>
+
+                  <div class="form-outline mb-5">
+                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                      value="John Smith" />
+                    <label class="form-label" for="typeName">Name on card</label>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-5">
+                      <div class="form-outline">
+                        <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
+                          size="7" id="exp" minlength="7" maxlength="7" />
+                        <label class="form-label" for="typeExp">Expiration</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                      <div class="form-outline">
+                        <input type="password" id="typeText" class="form-control form-control-lg"
+                          value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                        <label class="form-label" for="typeText">Cvv</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
+                      href="#!">obcaecati sapiente</a>.</p>
+
+                  <button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
+
+                  <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
+                    <a href="{{ url('/') }}"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
+                  </h5>
+
+                </form>
+
               </div>
-  
+              
             </div>
+
           </div>
-  
-          <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-light btn-lg me-2">Continue shopping</button>
-            <button type="button" class="btn btn-primary btn-lg">Add to cart</button>
-          </div>
-  
         </div>
       </div>
     </div>
-  </section>
-  <table id="cart" class="table table-hover table-condensed">
+  </div>
+</section>
 
-    <thead>
+<script>
+  $(".update-cart").change(function (e) {
+    e.preventDefault();
+    var ele = $(this);
+    $.ajax({
+        url: "{{ route('user.updatecart') }}",
+        method: "patch",
+        data: {
+            _token: '{{ csrf_token() }}', 
+            id: ele.parents(".up").attr("data-id"), 
+            quantity: ele.parents(".up").find(".quantity").val()
+        },
+        success: function (response) {
+          window.location.reload();
+        }
+    });
+  });
 
-        <tr>
+  $(".remove-from-cart").click(function (e) {
+    e.preventDefault();
+    var ele = $(this);
+    if(confirm("Are you sure want to remove?")) {
+        $.ajax({
+            url: "{{ route('user.removefromcart') }}",
+            method: "DELETE",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents(".up").attr("data-id")
+            },
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+    }
+});
+</script> 
 
-            <th style="width:50%">Product</th>
-
-            <th style="width:10%">Price</th>
-
-            <th style="width:8%">Quantity</th>
-
-            <th style="width:22%" class="text-center">Subtotal</th>
-
-            <th style="width:10%"></th>
-
-        </tr>
-
-    </thead>
-
-    <tbody>
-
-        @php $total = 0 @endphp
-
-        @if(session('cart'))
-
-            @foreach(session('cart') as $id => $details)
-
-                @php $total += $details['price'] * $details['quantity'] @endphp
-
-                <tr data-id="{{ $id }}">
-
-                    <td data-th="Product">
-
-                        <div class="row">
-
-                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div>
-
-                            <div class="col-sm-9">
-
-                                <h4 class="nomargin">{{ $details['name'] }}</h4>
-
-                            </div>
-
-                        </div>
-
-                    </td>
-
-                    <td data-th="Price">${{ $details['price'] }}</td>
-
-                    <td data-th="Quantity">
-
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
-
-                    </td>
-
-                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-
-                    <td class="actions" data-th="">
-
-                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
-
-                    </td>
-
-                </tr>
-
-            @endforeach
-
-        @endif
-
-    </tbody>
-
-    <tfoot>
-
-        <tr>
-
-            <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
-
-        </tr>
-
-        <tr>
-
-            <td colspan="5" class="text-right">
-
-                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-
-                <button class="btn btn-success">Checkout</button>
-
-            </td>
-
-        </tr>
-
-    </tfoot>
-
-</table>
 @endsection

@@ -124,7 +124,7 @@
 
         <footer class="footer-distributed">
 			<div class="footer-left">
-          <img src="../img/arabia.png" style="width:70px; height:70px; ">
+          <img src="{{ asset('../img/arabia.png') }}" style="width:70px; height:70px; ">
 				<h3>About<span>Arabia</span></h3>
 
 				<p class="footer-links">
