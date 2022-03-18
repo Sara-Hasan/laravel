@@ -36,7 +36,7 @@
                         @php $total += $details['price_course'] * $details['quantity'] @endphp
                 <div class="d-flex align-items-center mb-5 up" data-id="{{ $id }}">
                   <div class="flex-shrink-0">
-                    <img src="{{ $details['image_course'] }}"
+                    <img src="/storage/{{ $details['image_course'] }}"
                       class="img-fluid" style="width: 150px;" alt="image of course">
                   </div>
                   <div class="flex-grow-1 ms-3">
@@ -71,21 +71,21 @@
 
                   <div class="form-outline mb-5">
                     <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                      value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                      placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
                     <label class="form-label" for="typeText">Card Number</label>
                   </div>
 
                   <div class="form-outline mb-5">
                     <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                      value="John Smith" />
+                      placeholder="Enter your name on card" name="Name_on_card"/>
                     <label class="form-label" for="typeName">Name on card</label>
                   </div>
 
                   <div class="row">
                     <div class="col-md-6 mb-5">
                       <div class="form-outline">
-                        <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
-                          size="7" id="exp" minlength="7" maxlength="7" />
+                        <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="01/22"
+                          size="7" id="exp" minlength="7" maxlength="7" name="Expiration"/>
                         <label class="form-label" for="typeExp">Expiration</label>
                       </div>
                     </div>
@@ -93,6 +93,8 @@
                       <div class="form-outline">
                         <input type="password" id="typeText" class="form-control form-control-lg"
                           value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                          <input type="password" id="typeText" class="form-control form-control-lg" value="{{ $details['id'] }}"/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" value="{{ $total }}"/>
                         <label class="form-label" for="typeText">Cvv</label>
                       </div>
                     </div>

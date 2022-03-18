@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password',
         'image',
     ];
+    public function course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,4 +47,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

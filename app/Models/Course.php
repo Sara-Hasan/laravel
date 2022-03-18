@@ -16,4 +16,9 @@ class Course extends Model
         'price_course'
     ];
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }
