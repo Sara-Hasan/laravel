@@ -11,7 +11,7 @@
     <div class="row px-xl-5 px-sm-4 px-3">
     </div>
     <div class="card-body">
-      <form action="{{ route('admin.instr.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+      <form action="{{ route('admin.tech.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
         @if (Session::get('fail'))
             <div class="alert alert-danger">
                 {{ Session::get('fail') }}

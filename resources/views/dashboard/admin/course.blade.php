@@ -39,16 +39,6 @@
           <input type="text" name='price_course' class="form-control" placeholder="Price Course" aria-label="price_course">
           <span class="text-danger">@error('price_course'){{ $message }}@enderror</span>
         </div>
-        <div class="mb-3">
-          <select name="instructor_id">
-            <?php
-                foreach ($instructor as $item ) { ?>
-                  <option value="{{ $item->id }}">
-                    {{ $item->name }}
-                  </option>
-            <?php  } ?>
-          </select>
-        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
               <label for="img">Image Upload</label>

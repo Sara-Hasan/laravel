@@ -125,7 +125,7 @@ label.logo img {
     }
 }
 
-@media (max-width: 858px) {
+@media (max-width: 768px) {
     .checkbtn {
         display: block;
     }
@@ -144,7 +144,6 @@ label.logo img {
         margin: 50px 0;
         line-height: 30px;
     }
-
     nav ul li a {
         font-size: 20px;
     }
