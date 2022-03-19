@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Instructor;
 use Illuminate\Support\Facades\Hash;
 
 class CourseAdminController extends Controller
@@ -13,7 +14,8 @@ class CourseAdminController extends Controller
     public function index()
     {
         $courses = DB::table('courses')->get();
-        return view ('dashboard.admin.course', compact('courses'));
+        $instructor = Instructor::all();
+        return view ('dashboard.admin.course', compact('courses','instructor'));
     }
     public function create()
     {

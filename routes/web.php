@@ -13,9 +13,6 @@ use App\Http\Controllers\Admin\InstractorAdminController;
 use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\SinglepageController;
-use App\Http\Controllers\User\WelcomeController;
-use App\Models\Booking;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +60,8 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.user.home')->name('home');
+        // Route::resource('/profile', ProfileController::class);
+        // Route::get('lhome', [HomeController::class, 'index'])->name('lhome');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
