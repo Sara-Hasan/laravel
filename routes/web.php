@@ -63,8 +63,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
         Route::view('/home', 'dashboard.user.home')->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
-        Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
+        // Route::post('/check', [UserController::class, 'check'])->name('check'); 
+        // Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
         Route::get('/courses', [CourseController::class, 'index'])->name('courses');
         Route::resource('singlepage', SinglepageController::class);
         Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');

@@ -16,17 +16,21 @@
 
 <section class="pick-course">
     <div class="container">
-            <div class="courses">
-                <div class="course text-align">
-                    <div class="picture" style="background-image: url('/storage/{{ $courses->image_course }}');"></div>
-                    {{-- <img src="/storage/{{ $courses->image_course }}" alt=""> --}}
-                    <h5> {{ $courses->name_course }}  </h5>
-                    <p> Teacher TONY GARRETT </p>
-                    <div class="line"></div>
-                    <span>{{ $courses->houre_course }}                               {{ $courses->price_course }}$ </span>
-                    <p class="btn-holder"><a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
-                </div>
-            </div>
+        <h2 style="text-align: left">{{ $courses->name_course }}</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <img class="img-fluid" src="/storage/{{ $courses->image_course }}" alt="Course image" style="width: 550px; height:550px">
+          </div>
+      
+          <div class="col-md-6">
+            <h3 class="my-3">Course Description</h3>
+            <p>{{ $courses->desc_course }}</p>
+            <h3 class="my-3">Course Details</h3>
+              <p> Course hours: {{ $courses->houre_course }} houre</p>
+              <p> Course price: {{ $courses->price_course }}$</p>
+              <p class="btn-holder"><a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+          </div>  
+        </div>
     </div>
 </section>
 @endsection
