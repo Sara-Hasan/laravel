@@ -8,8 +8,12 @@
                 <i class="fa fa-chevron-right"></i></a></span> <span>
                     Course Lists
                 <i class="fa fa-chevron-right"></i></span>
+                About Course
+                <i class="fa fa-chevron-right"></i></span>
+                My course Lists
+                <i class="fa fa-chevron-right"></i></span>
             </p>
-            <h2> Course Lists </h2>
+            <h2> My course Lists </h2>
         </div>
     </div>  
 </header>
@@ -37,7 +41,7 @@
                 <div class="d-flex align-items-center mb-5 up" data-id="{{ $id }}">
                   <div class="flex-shrink-0">
                     <img src="/storage/{{ $details['image_course'] }}"
-                      class="img-fluid" style="width: 150px;" alt="image of course">
+                      class="img-fluid" style="width: 100px; height:100px" alt="image of course">
                   </div>
                   <div class="flex-grow-1 ms-3">
                     <a href="#!" class="float-end text-black remove-from-cart"><i class="fa-solid fa-x"></i></a>
@@ -46,7 +50,7 @@
                     <div class="d-flex align-items-center">
                       <p class="fw-bold mb-0 me-5 pe-3">${{ $details['price_course'] }}</p>
                       <div class="def-number-input number-input safari_only">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                        {{-- <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" /> --}}
                       </div>
                     </div>
                   </div>
@@ -68,16 +72,6 @@
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
 
                 <form action="{{ route('user.mycourse.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
-                  @if (Session::get('fail'))
-                      <div class="alert alert-danger">
-                          {{ Session::get('fail') }}
-                      </div>
-                  @endif
-                  @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                <p>{{ $message }}</p>
-                </div>
-               @endif
                   @csrf
                   <div class="form-outline mb-5">
                     <input type="text" class="form-control form-control-lg" 
@@ -106,8 +100,8 @@
                       <div class="form-outline">
                         <input type="password" id="typeText" class="form-control form-control-lg"
                            size="1" minlength="3" maxlength="3" name="Cvv"/>
-                          <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}"/>
-                          <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}"/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}" hidden/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}" hidden/>
                         <label class="form-label" for="typeText">Cvv</label>
                         <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
                       </div>
@@ -116,11 +110,9 @@
 
                   <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
                       href="#!">obcaecati sapiente</a>.</p>
-
-                  <button type="submit" class="btn btn-primary btn-block btn-lg">Buy now</button>
-
+                  <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
                   <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                    <a href="{{ url('/') }}"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
+                    <a href="{{ url('/') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
                   </h5>
 
                 </form>

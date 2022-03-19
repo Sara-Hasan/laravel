@@ -23,15 +23,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        
-        return view('home',compact('courses'));
-    }
-    public function course()
-    {
-        // $courses = Course::all();
-        $courses = DB::table('courses')->get();
-        return view('welcome',compact('courses'));
-    }
+   
 }

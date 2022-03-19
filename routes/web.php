@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\InstractorAdminController;
 use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\SinglepageController;
+use App\Http\Controllers\User\WelcomeController;
 use App\Models\Booking;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -30,11 +31,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'course'])->name('/');
+Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select'])->name('welcome');
 
  Route::prefix('user')->name('user.')->group(function(){
 
@@ -53,7 +55,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
         Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
         Route::get('/book', [BookingController::class, 'index'])->name('book');
-        // Route::resource('courses', CourseController::class);
         Route::get('cart', [CourseController::class, 'cart'])->name('cart');
         Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
         Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
@@ -64,14 +65,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::view('/home', 'dashboard.user.home')->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        // Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
+        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
         Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        Route::view('/about', 'dashboard.user.about')->name('about');
         Route::resource('singlepage', SinglepageController::class);
         Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
         Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
         Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
         Route::get('/book', [BookingController::class, 'index'])->name('book');
-        // Route::resource('courses', CourseController::class);
         Route::get('cart', [CourseController::class, 'cart'])->name('cart');
         Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
         Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');

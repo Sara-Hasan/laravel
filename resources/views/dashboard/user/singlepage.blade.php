@@ -8,8 +8,10 @@
                 <i class="fa fa-chevron-right"></i></a></span> <span>
                     Course Lists
                 <i class="fa fa-chevron-right"></i></span>
+                    About Course
+                <i class="fa fa-chevron-right"></i></span>
             </p>
-            <h2> Course Lists </h2>
+            <h2> About Course </h2>
         </div>
     </div>  
 </header>
@@ -28,7 +30,7 @@
             <h3 class="my-3">Course Details</h3>
               <p> Course hours: {{ $courses->houre_course }} houre</p>
               <p> Course price: {{ $courses->price_course }}$</p>
-              <p class="btn-holder"><a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+              <a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center cart" role="button">Add to cart</a> 
           </div>  
         </div>
     </div>

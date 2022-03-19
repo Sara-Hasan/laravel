@@ -9,7 +9,7 @@
                     Course Lists
                 <i class="fa fa-chevron-right"></i></span>
             </p>
-      user.singlepage      <h2> Course Lists </h2>
+            <h2> Course Lists </h2>
         </div>
     </div>  
 </header>

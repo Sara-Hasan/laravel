@@ -22,13 +22,15 @@
         {{ $cours->name_course }}
         @endforeach --}}
         <div class="courses">
+            {{-- @foreach ( $courses as $cours ) --}}
             <div class="course text-align">
                 <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
-                <h5> ​Course name </h5>
+                {{-- <h5>{{ $cours->name_course }} </h5> --}}
                 <p> Teacher TONY GARRETT </p>
                 <div class="line"></div>
                 <span> ​$199                               2300 </span>
             </div> 
+            {{-- @endforeach --}}
         </div>
     </div>
 </section>

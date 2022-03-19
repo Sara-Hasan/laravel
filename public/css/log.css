@@ -113,3 +113,8 @@ input[type="password"] {
     background-color: #e2e2e7;
     border: none;
 }
+.cart {
+    width: 100%;
+    height: 9%;
+    font-size: 20px;
+}
