@@ -42,7 +42,6 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
         Route::view('/register', 'dashboard.user.register')->name('register');
         Route::view('/contactcreate', 'dashboard.user.contact')->name('contactcreate');
         Route::view('/about', 'dashboard.user.about')->name('about');
-        // Route::view('/course', 'dashboard.user.course')->name('course');
         Route::post('/create', [UserController::class, 'create'])->name('create');
         Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
@@ -66,6 +65,7 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
         Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        Route::get('/courses', [CourseController::class, 'create'])->name('courses');
         Route::view('/about', 'dashboard.user.about')->name('about');
         Route::resource('singlepage', SinglepageController::class);
         Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');

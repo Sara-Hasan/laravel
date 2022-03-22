@@ -67,7 +67,7 @@ nav {
     width: 100%;
     height: 80px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
 }
 label.logo {
     font-size: 30px;
@@ -80,6 +80,7 @@ label.logo a {
 nav ul {
     float: right;
     margin-right: 20px;
+    overflow: visible;
 }
 nav ul li {
     display: inline-block;
@@ -114,7 +115,36 @@ label.logo img {
 #check {
     display: none;
 }
-
+li a, .dropbtn {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 @media (max-width: 952px) {
     label.logo {
         font-size: 22px;
@@ -154,6 +184,7 @@ label.logo img {
     #check:checked ~ ul {
         left: 0;
     }
+    
 }
 /************** breadcrumbs*************/
 .breadcrumbs {
