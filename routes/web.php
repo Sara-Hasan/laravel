@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\SinglepageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\BookingAdminController;
+use App\Http\Controllers\Admin\StudentInfoAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +97,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('course', CourseAdminController::class);
         Route::resource('tech', InstractorAdminController::class);
         Route::resource('subadmin', SubAdminController::class);
+        Route::resource('book', BookingAdminController::class);
+        Route::resource('stuinfo', StudentInfoAdminController::class);
     });
 
 });

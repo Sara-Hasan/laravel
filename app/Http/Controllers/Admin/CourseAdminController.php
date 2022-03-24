@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Instructor;
 use Illuminate\Support\Facades\Hash;
+use Delete;
 
 class CourseAdminController extends Controller
 {
@@ -99,11 +100,12 @@ class CourseAdminController extends Controller
     
     public function destroy(Course $courses_id)
     {
+        $courses = Course::find($courses_id);
+       $courses->delete();
+       return redirect()->route('admin.course.index');
         // $instructors->delete();
-        DB::delete('delete from courses where id = ?',[$courses_id]);
-        return redirect()->route('admin.course.index')
-        ->with('success','course has been deleted successfully');
+        // DB::delete('delete from courses where id = ?',[$courses_id]);
+        // return redirect()->route('admin.course.index')
+        // ->with('success','course has been deleted successfully');
     }
-
-
 }

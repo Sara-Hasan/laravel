@@ -67,10 +67,6 @@
                     <li> 
                         <a href="{{ route('instructor.login') }}">  Instructor </a>
                     </li>
-                    <li> 
-                        <a href="{{ route('user.cart') }}"> <i class="fa fa-shopping-cart"></i><span>@if (Session::has('cart_items'))<span class="cart_items">{{ Session::get('cart_items') }}</span>
-                            @endif</span></a>
-                    </li>
                     @guest
                     @if (Route::has('user.login'))
                         <li>
@@ -99,6 +95,10 @@
                     </div>
                   </li>
                 @endguest
+                <li> 
+                    <a href="{{ route('user.cart') }}"> <i class="fa fa-shopping-cart"></i><span>@if (Session::has('cart_items'))<span class="cart_items">{{ Session::get('cart_items') }}</span>
+                        @endif</span></a>
+                </li>
                 </ul>
             </div> 
             

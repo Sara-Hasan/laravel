@@ -49,10 +49,16 @@
     .login button {
         width: 90%;
     }
+    .login .logning {
+        width: 100%;
+    }
 }
 @media (min-width: 786px) {
     .login button {
         width: 90%;
+    }
+    .login .logning {
+        width: 100%;
     }
 }
 @media (max-width: 800px) {
@@ -103,9 +109,6 @@
     label.logo img {
         width: 80px;
         height: 81px;
-    }
-    .login .logning {
-        width: 100%;
     }
 }
 @media (max-width: 767.98px){

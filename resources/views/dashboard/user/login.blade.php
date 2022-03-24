@@ -26,8 +26,9 @@
                         <input type="password"id="password" name="password" placeholder="Enter password" value="{{ old('password') }}">
                         <span class="text-danger">@error('password'){{ $message }}@enderror</span>
 
-                        {{-- <input type="submit" value="SIGN IN"> --}}
                         <button type="submit" class="btn btn-primary">SIGN IN</button>
+                        <p class="text-center go">Don't have an account? <a href="{{ route('user.register') }}" class="link">Sign Up</a></p>
+
                     </form>
                 </div>
             </div>
