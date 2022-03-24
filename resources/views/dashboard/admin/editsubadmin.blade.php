@@ -1,4 +1,7 @@
 @extends('dashboard.admin.masteradmin')
+@section('title')
+ Arabia : Edit Sub Admin
+@endsection
 @section('content')
   <div class="row">
     <div class="col-12">

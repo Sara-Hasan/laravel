@@ -1,4 +1,7 @@
 @extends('dashboard.admin.masteradmin')
+@section('title')
+ Arabia : Booking 
+@endsection
 @section('content')
 <div class="row">
   <div class="col-12">
@@ -31,7 +34,7 @@
                   <p class="text-sm font-weight-bold mb-0">{{ $item->Card_Number }}</p>
                 </td>
                 <td>
-                  {{-- <p class="text-sm font-weight-bold mb-0">{{ $item->phone }}</p> --}}
+                  <p class="text-sm font-weight-bold mb-0">{{ $item->phone }}</p>
                 </td>
                 <td>
                   <div class="d-flex px-2">

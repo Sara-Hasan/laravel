@@ -1,14 +1,17 @@
 @extends('dashboard.admin.masteradmin')
+@section('title')
+ Arabia : Edit Booking 
+@endsection
 @section('content')
   <div class="row">
     <div class="col-12">
 <div class="container-fluid py-4">
   <div class="card z-index-0">
     <div class="card-header pt-4">  
-      <h5> Update Courses:</h5>
+      <h5> Update booking:</h5>
     </div>
     <div class="card-body">
-      <form action="{{ route('admin.course.update', $courses->id ) }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+      <form action="{{ route('admin.book.update', $booking->id ) }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
         @if (Session::get('fail'))
             <div class="alert alert-danger">
                 {{ Session::get('fail') }}
@@ -22,33 +25,39 @@
         @csrf     
         @method('PUT')
         <div class="mb-3">
-          <input type="text" value="{{ $courses->name_course }}" name="name_course" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
-          <span class="text-danger">@error('name_course'){{ $message }}@enderror</span>
+          <input type="text" value="{{ $booking->Card_Number }}" name="Card_Number" class="form-control" disabled>
+          <span class="text-danger">@error('Card_Number'){{ $message }}@enderror</span>
         </div>
         <div class="mb-3">
-          <input type="text" value="{{ $courses->desc_course }}" name="desc_course" class="form-control" placeholder="Phone" aria-label="Phone" aria-describedby="email-addon">
-          <span class="text-danger">@error('desc_course'){{ $message }}@enderror</span>
+          <input type="text" value="{{ $booking->Name_on_card }}" name="Name_on_card" class="form-control" disabled>
+          <span class="text-danger">@error('Name_on_card'){{ $message }}@enderror</span>
         </div>
         <div class="mb-3">
-          <input type="text" value="{{ $courses->houre_course }}" name="houre_course" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-          <span class="text-danger">@error('houre_course'){{ $message }}@enderror</span>
+          <input type="text" value="{{ $booking->Expiration }}" name="Expiration" class="form-control" disabled>
+          <span class="text-danger">@error('Expiration'){{ $message }}@enderror</span>
         </div>
         <div class="mb-3">
-          <input type="text" value="{{ $courses->price_course }}" name="price_course" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-          <span class="text-danger">@error('price_course'){{ $message }}@enderror</span>
+          <input type="text" value="{{ $booking->Cvv }}" name="Cvv" class="form-control" disabled>
+          <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-              <label for="img">Image Upload</label>
-              {{-- <input type="file" name="image" id="img"> --}}
-              <input type="file" name="image_course" id="image_course" required>
-          @error('image_course')
-          <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-          @enderror
+        <div class="mb-3">
+            <input type="text" value="{{ $booking->total }}" name="total" class="form-control">
+            <span class="text-danger">@error('total'){{ $message }}@enderror</span>
           </div>
-        </div>
+          <div class="mb-3">
+            <input type="text" value="{{ $booking->phone }}" name="phone" class="form-control">
+            <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+          </div>
+          <div class="mb-3">
+            <input type="text" value="{{ $booking->user_id }}" name="user_id" class="form-control" disabled>
+            <span class="text-danger">@error('user_id'){{ $message }}@enderror</span>
+          </div>
+          <div class="mb-3">
+            <input type="text" value="{{ $booking->course_id }}" name="course_id" class="form-control">
+            <span class="text-danger">@error('course_id'){{ $message }}@enderror</span>
+          </div>
         <div class="text-center">
-          <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Update Courses</button>
+          <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Update booking</button>
         </div>
       </form>
     </div>

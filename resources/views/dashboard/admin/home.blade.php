@@ -1,4 +1,7 @@
 @extends('dashboard.admin.masteradmin')
+@section('title')
+ Arabia : Home
+@endsection
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">

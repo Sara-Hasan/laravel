@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+ About Arabia  
+@endsection
 @section('content')
 <header style="background-image: url('../img/bg2.jpeg'); height: 200px;">
     <div class="header-bg">

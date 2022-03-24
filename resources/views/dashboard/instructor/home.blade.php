@@ -1,4 +1,7 @@
-@extends('dashboard.instructor.nav')
+@extends('layouts.app')
+@section('title')
+ Arabia : Profile 
+@endsection
 @section('content')
 <header style="background-image: url('../img/bg2.jpeg'); height: 200px;">
     <div class="header-bg">

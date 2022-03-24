@@ -1,4 +1,7 @@
 @extends('dashboard.admin.masteradmin')
+@section('title')
+ Arabia : User
+@endsection
 @section('content')
 @if (isset( $_GET["do"])) 
   <div class="row">

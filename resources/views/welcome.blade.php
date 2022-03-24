@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+ Arabia 
+@endsection
 @section('content')
 <header>
     <div class="header">

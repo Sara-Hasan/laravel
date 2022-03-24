@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+ Arabia : Sign In 
+@endsection
     @section('content')
     <section class="login">
         <div class="container">
