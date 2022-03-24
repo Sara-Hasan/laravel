@@ -15,11 +15,11 @@ class CreateCourseUsersTable extends Migration
     {
         Schema::create('course_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('instructor_name');
-            $table->string('Link');
-            $table->char('Houre_of_lesson');
+            $table->string('instructor_name');
+            $table->longText('Link');
+            $table->string('Houre_of_lesson');
             $table->string('Arabic_Level');
-            $table->char('days');
+            $table->string('days');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('order_id');
             $table->timestamps();

@@ -6,12 +6,12 @@
 <div class="container-fluid py-4">
   <div class="card z-index-0">
     <div class="card-header pt-4">
-      <h5> Create User: </h5>
+      <h5> Create Admin: </h5>
     </div>
     <div class="row px-xl-5 px-sm-4 px-3">
     </div>
     <div class="card-body">
-      <form action="{{ route('admin.user.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+      <form action="{{ route('admin.subadmin.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
         @if (Session::get('fail'))
             <div class="alert alert-danger">
                 {{ Session::get('fail') }}
@@ -25,11 +25,11 @@
         @csrf
         <div class="mb-3">
           <input type="text" name='name' class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
-          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+          <span class="text-danger">@error('name'){{ $message }}@enderror</span>
         </div>
         <div class="mb-3">
           <input type="text" name='phone' class="form-control" placeholder="Phone" aria-label="Phone" aria-describedby="email-addon">
-          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+          <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
         </div>
         <div class="mb-3">
           <input type="email" name='email' class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3">
           <input type="password" name='password' class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+          <span class="text-danger">@error('password'){{ $message }}@enderror</span>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
@@ -49,7 +49,7 @@
           </div>
       </div>
         <div class="text-center">
-          <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Add User</button>
+          <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Add Admin</button>
         </div>
       </form>
     </div>
@@ -61,8 +61,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Authors table </h6>
-            <a class="create" href="?do=add"><button type="button" class="btn btn-success left">Create User</button></a>
+            <a class="create" href="?do=add"><button type="button" class="btn btn-success left">Create Admin</button></a>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -97,10 +96,10 @@
                       <span class="text-secondary text-xs font-weight-bold">{{ $item->created_at }}</span>
                     </td>
                     <td class="align-middle">
-                      <a class="btn btn-outline-primary btn-sm mb-0" href={{ route('admin.user.edit',$item->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                      <a class="btn btn-outline-primary btn-sm mb-0" href={{ route('admin.subadmin.edit',$item->id) }}><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                     </td>
                       <td class="align-middle">
-                      <form action="{{ route('admin.user.destroy',$item->id) }}" method="post">
+                      <form action="{{ route('admin.subadmin.destroy',$item->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-primary btn-sm mb-0">

@@ -102,18 +102,19 @@
                            size="1" minlength="3" maxlength="3" name="Cvv"/>
                           <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}" />
                           <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}" />
-                        <label class="form-label" for="typeText">Cvv</label>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="phone" value="{{ Auth::user()->phone }}" />
+                          <label class="form-label" for="typeText">Cvv</label>
                         <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
                       </div>
                     </div>
                   </div>
+                      <div class="flo">
+                        <h5 class="fw-bold mb-5" style="bottom: 0;">
+                          <a href="{{ route('user.courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
+                        </h5>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
 
-                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
-                      href="#!">obcaecati sapiente</a>.</p>
-                  <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
-                  <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                    <a href="{{ route('user.courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
-                  </h5>
+                      </div>
 
                 </form>
 

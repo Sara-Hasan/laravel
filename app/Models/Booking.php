@@ -16,5 +16,6 @@ class Booking extends Model
         'Cvv',
         'total',
         'user_id',
+        'phone',
     ];
 }

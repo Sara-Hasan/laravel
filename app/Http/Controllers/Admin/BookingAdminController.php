@@ -15,62 +15,31 @@ class BookingAdminController extends Controller
         $booking = DB::table('bookings')->get();
         return view ('dashboard.admin.booking', compact('booking'));
     }
-    public function create()
+    public function show(Course $booking)
     {
-        return view('dashboard.admin.course', compact('courses'));
+        return view('dashboard.admin.editbooking', compact('booking'));
     }
-    public function store(Request $request)
+    public function edit($booking_id)
+    {
+        $booking= Booking::find($booking_id);
+        return view('dashboard.admin.editbooking', compact('booking'));     
+    }
+    public function update(Request $request, $booking_id)
     {
         $request->validate([
-            'name_course'=>'required',
-            'desc_course'=>'required',
-            'houre_course'=>'required',
-            'price_course'=>'required',
-            'image_course' => 'required|mimes:jpg,jpeg,png|max:5000'
+            'total'=>'required',
+            'course_id'=>'required',
+            'phone'=>'required',
         ]);
-        if ($request->hasFile('image_course')) {
-            $file = $request->image_course;
-            $filename = $file->getClientOriginalName();
-            $file->move('storage', $filename);
-            $courses = new Course([
-                'name_course' => $request->name_course,
-                'desc_course' => $request->desc_course,
-                'image_course' => $filename,
-                'houre_course' => $request->houre_course,
-                'price_course' => $request->price_course
-            ]);
-        }
-        $courses->save();
-        return redirect()->route('admin.course.index')
-        ->with('success','Inserting successfully');
-    }
-    public function show(Course $courses)
-    {
-        return view('dashboard.admin.editcourse', compact('courses'));
-    }
-    public function edit($courses_id)
-    {
-        $courses= Course::find($courses_id);
-        return view('dashboard.admin.editcourse', compact('courses'));     
-    }
-    public function update(Request $request, $courses_id)
-    {
-        $request->validate([
-            'name_course'=>'required',
-            'desc_course'=>'required',
-            'houre_course'=>'required',
-            'price_course'=>'required',
-            'image_course' => 'required|mimes:jpg,jpeg,png|max:5000'
-        ]);
-        $courses= Course::find($courses_id);
+        $booking= Booking::find($booking_id);
         
         // $instructors = Instructor::find($id);
      if($request->image_course != ''){        
           $path = public_path().'\storage\\';
 
         //   //code for remove old file
-          if($courses->image_course != ''  && $courses->image_course != null){
-               $file_old = $path.$courses->image_course;
+          if($booking->image_course != ''  && $booking->image_course != null){
+               $file_old = $path.$booking->image_course;
                unlink($file_old);
           }
 
@@ -79,29 +48,29 @@ class BookingAdminController extends Controller
           $filename = $file->getClientOriginalName();
           $file->move($path, $filename);
          
-          $courses->name_course = $request->name_course;
-          $courses->desc_course = $request->desc_course;
-         $courses->image_course = $filename;
-          $courses->houre_course = $request->houre_course;
-          $courses->price_course = $request->price_course;
+          $booking->name_course = $request->name_course;
+          $booking->desc_course = $request->desc_course;
+         $booking->image_course = $filename;
+          $booking->houre_course = $request->houre_course;
+          $booking->price_course = $request->price_course;
         // $instructor = $request->all();
         // var_dump($instructors);
 
           //for update in table
-          $courses->update(['file' => $filename]);
+          $booking->update(['file' => $filename]);
      }
-     $courses->update();
+     $booking->update();
         return redirect()->route('admin.course.index')
         ->with('success','instructor has been updated successfully.'); 
     }
     
-    public function destroy(Course $courses_id)
+    public function destroy(Course $booking_id)
     {
-        $courses = Course::find($courses_id);
-       $courses->delete();
+        $booking = Course::find($booking_id);
+       $booking->delete();
        return redirect()->route('admin.course.index');
         // $instructors->delete();
-        // DB::delete('delete from courses where id = ?',[$courses_id]);
+        // DB::delete('delete from booking where id = ?',[$booking_id]);
         // return redirect()->route('admin.course.index')
         // ->with('success','course has been deleted successfully');
     }

@@ -176,3 +176,10 @@
     font-size: 15px;
     line-height: 23px
 }
+.flo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+}

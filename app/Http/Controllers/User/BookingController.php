@@ -38,6 +38,7 @@ class BookingController extends Controller
             //     'Cvv' => $request->Cvv,
             //     'course_id' => $request->course_id,
             //     'total' => $request->total,
+            //     'total' => $request->phone,
             // ]);
             if(Session::has(Auth::guard()->user()->id.'courses')){
                 Session::push(Auth::guard()->user()->id.'courses', $input);
