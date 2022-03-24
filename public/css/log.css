@@ -7,8 +7,16 @@
     border-radius: 40px;
     background-color: #fff;
     height: 500px;
-    width: 90%;
+    width: 70%;
     margin: auto;
+}
+.link{
+    color:#4986fc;
+}
+.go {
+    font-size: 20px;
+    color: darkgray;
+    margin-top: 20px;
 }
 .sign {
     height: 800px;
