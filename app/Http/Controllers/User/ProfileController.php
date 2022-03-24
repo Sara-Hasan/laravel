@@ -16,5 +16,6 @@ class ProfileController extends Controller
         $users= User::find($id);
         // $users = DB::table('users')->get($id);
         return view('dashboard.user.home', compact('users'));  
+    
     }
 }

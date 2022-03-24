@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\InstractorAdminController;
 use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\SinglepageController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,14 +59,13 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
-        Route::view('/home', 'dashboard.user.home')->name('home');
+        // Route::view('/home', 'dashboard.user.home')->name('home');
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
         // Route::resource('/profile', ProfileController::class);
         // Route::get('lhome', [HomeController::class, 'index'])->name('lhome');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
         Route::get('/courses', [CourseController::class, 'index'])->name('courses');
-        Route::get('/courses', [CourseController::class, 'create'])->name('courses');
         Route::view('/about', 'dashboard.user.about')->name('about');
         Route::resource('singlepage', SinglepageController::class);
         Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');

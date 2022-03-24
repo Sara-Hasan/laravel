@@ -15,13 +15,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = DB::table('courses')->get();
-        return view('dashboard.user.course', ['courses' => $courses]);
+        // $courses = DB::table('courses')->get();
+        $courses = Course::all();
+        return view('dashboard.user.course', compact(['courses']));
         
-    }
-    public function create()
-    {
-        return view('dashboard.user.course');
     }
     public function cart()
 

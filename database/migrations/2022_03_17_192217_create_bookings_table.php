@@ -15,11 +15,11 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('Card_Number');
+            $table->string('Card_Number')->nullable();
             $table->string('Name_on_card');
-            $table->char('Expiration');
+            $table->string('Expiration');
             $table->string('Cvv');
-            $table->char('total');
+            $table->integer('total');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
             $table->timestamps();

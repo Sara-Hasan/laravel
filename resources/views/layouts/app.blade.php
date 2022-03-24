@@ -67,6 +67,10 @@
                     <li> 
                         <a href="{{ route('instructor.login') }}">  Instructor </a>
                     </li>
+                    <li> 
+                        <a href="{{ route('user.cart') }}"> <i class="fa fa-shopping-cart"></i><span>@if (Session::has('cart_items'))<span class="cart_items">{{ Session::get('cart_items') }}</span>
+                            @endif</span></a>
+                    </li>
                     @guest
                     @if (Route::has('user.login'))
                         <li>
@@ -81,7 +85,7 @@
                     @endif
                 @else
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('user.home') }}" class="dropbtn">{{ Auth::user()->name }}</a>
                     <div class="dropdown-content">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -94,23 +98,6 @@
                         </form>
                     </div>
                   </li>
-                    {{-- <li class="dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li> --}}
                 @endguest
                 </ul>
             </div> 
@@ -186,14 +173,14 @@
         <footer class="footer-distributed">
 			<div class="footer-left">
           <img src="{{ asset('../img/arabia.png') }}" style="width:70px; height:70px; ">
-				<h3>About<span>Arabia</span></h3>
+				<h3>About<span> Arabia</span></h3>
 
 				<p class="footer-links">
 					<a href="{{ url('/') }}">Home</a>
 					|
-					<a href="{{ url('/') }}">About</a>
+					<a href="{{ route('user.about') }}">About</a>
 					|
-					<a href="{{ url('/') }}">Contact</a>
+					<a href="{{ route('user.contactcreate') }}">Contact</a>
 				</p>
 
 				<p class="footer-company-name">© 2022 Arabia Ltd.</p>
@@ -216,7 +203,7 @@
 			</div>
 			<div class="footer-right">
 				<p class="footer-company-about">
-					<span>About the company</span>
+					<span>About Us</span>
                     Far far away, behind the word mountains,
                     far from the countries Vokalia and Consonantia, there live the blind texts.
                     <div class="footer-icons">

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/media.css') }}">
     <link rel="stylesheet" href="{{ asset('css/log.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -41,79 +42,68 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <input type="checkbox" id="check" />
+                <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+                </label>
                 <label class="logo">
                     <a href="{{ url('/') }}">
                         <img src="{{ asset('../img/arabia-removebg-preview.png') }}" alt="Logo Arabia">
-                     </a> 
-                </label> 
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
-                <input type="checkbox" id="check" />
-                <label for="check" class="checkbtn">
-                  <i class="fas fa-bars"></i>
+                     </a>  
                 </label>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    {{-- <ul class="navbar-nav me-auto">
             
-                    </ul>
+                    </ul> --}}
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul>
                         <li>
-                            <a href="{{ url('/') }}" class="nav-link"> Home  </a> 
+                            <a href="{{ url('/') }}"> Home  </a> 
                         </li>
                         <li> 
-                            <a href="{{ route('user.courses') }}" class="nav-link">  Course </a>
+                            <a href="{{ route('user.courses') }}">  Course </a>
                         </li>
                         {{-- <li> 
                             <a href="#service" class="nav-link">  Service </a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('user.about') }}" class="nav-link"> About us  </a> 
+                            <a href="{{ route('user.about') }}"> About us  </a> 
                         </li>
                         <li>
-                            <a class="contact nav-link" href="{{ route('user.contactcreate') }}">  Contact us </a>
+                            <a class="contact" href="{{ route('user.contactcreate') }}">  Contact us </a>
                         </li>
                         <li> 
-                            <a href="{{ route('instructor.login') }}" class="nav-link">  Instructor </a>
+                            <a href="{{ route('instructor.login') }}">  Instructor </a>
                         </li>
                         
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('instructor.login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('instructor.login') }}">{{ __('Login') }}</a>
+                                    <a href="{{ route('instructor.login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('instructor.register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('instructor.register') }}">{{ __('Register') }}</a>
+                                    <a href="{{ route('instructor.register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::guard('instructor')->user()->name }}
-                                </a>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropbtn"> {{ Auth::guard('instructor')->user()->name }}</a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ route('instructor.logout') }}
-                                    </a>
+                                <div class="dropdown-content" >
+                                    <a href="{{ route('instructor.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
 
-                                    <form id="logout-form" action="{{ route('instructor.logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                    <form action="{{ route('instructor.logout') }}" id="logout-form" method="post">@csrf</form>
                                 </div>
                             </li>
                         @endguest
                     </ul>
-                </div>
+                {{-- </div> --}}
             </div>
         </nav>
 

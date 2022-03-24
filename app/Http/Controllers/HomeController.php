@@ -21,12 +21,12 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $id =  Auth::guard('web')->user()->id;
-        echo $id;
-        // $users= User::find($id);
-        $users = DB::table('users')->get();
-        return view('dashboard.user.home', compact('users'));  
+        // dd(Auth::user()->id);
+        // $course = User::find(Auth::user()->id)->course;
+        // dd($course);
+        return view('dashboard.user.home');  
     }
+
     /**
      * Show the application dashboard.
      *

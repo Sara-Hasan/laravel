@@ -35,11 +35,10 @@
                         <div class="profile-head">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">User Information</a>
                         </li>
-                        
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#link" role="tab" aria-controls="profile" aria-selected="false">Link for your lesson</a>
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#link" role="tab" aria-controls="profile" aria-selected="false">Information courses</a>
                         </li>
                     </ul>
                 </div>
@@ -86,6 +85,42 @@
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="link" role="tabpanel" aria-labelledby="profile-tab">
+
+                                <div class="container">
+                            <table class="table align-middle mb-0 bg-white">
+                                <thead class="bg-light">
+                                  <tr>
+                                    <th>instructor name</th>
+                                    <th>Link</th>
+                                    <th>Houre of lesson</th>
+                                    <th>Arabic Level</th>
+                                    <th>days</th>
+                                    <th>course name</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <div class="d-flex align-items-center">
+                                        <div class="ms-3">
+                                          <p class="fw-bold mb-1">John Doe</p>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <p class="fw-normal mb-1">Software engineer</p>
+                                    </td>
+                                    <td>Senior</td>
+                                    <td>Senior</td>
+                                    <td>Senior</td>
+                                    <td>Senior</td>
+                                  </tr>
+                                 
+                                </tbody>
+                              </table>
+                            </div>
+                        </div>
+                            {{-- <div class="tab-pane fade" id="link" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Link</label>
@@ -134,7 +169,7 @@
                                         <p>arabic</p>
                                     </div>
                                 </div>
-                    </div>
+                    </div> --}}
                         </div>
                     </div>
                 </div>

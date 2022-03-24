@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BookingController extends Controller
 {
@@ -27,16 +28,29 @@ class BookingController extends Controller
             'Name_on_card'=>'required',
             'Cvv'=>'required',
         ]);
-            $booking = new Booking([
-                'Card_Number' => $request->Card_Number,
-                'Expiration' => $request->Expiration,
-                'Name_on_card' => $request->Name_on_card,
-                'Cvv' => $request->Cvv,
-                'user_id' => Auth::user()->id,
-                'course_id' => $request->course_id,
-                'total' => $request->total,
-            ]);
-        $booking->save();
+            $input = $request->all();
+            $input['user_id'] = Auth::user()->id;
+            Booking::create($input);
+            // $booking = new Booking([
+            //     'Card_Number' => $request->Card_Number,
+            //     'Expiration' => $request->Expiration,
+            //     'Name_on_card' => $request->Name_on_card,
+            //     'Cvv' => $request->Cvv,
+            //     'course_id' => $request->course_id,
+            //     'total' => $request->total,
+            // ]);
+            if(Session::has(Auth::guard()->user()->id.'courses')){
+                Session::push(Auth::guard()->user()->id.'courses', $input);
+            }else{
+                Session::put(Auth::guard()->user()->id.'courses', []);
+                Session::push(Auth::guard()->user()->id.'courses', $input);
+            }
+            if(Session::has('cart_items')){
+                Session::put('cart_items', Session::get('cart_items')+1);
+            }else{
+                Session::put('cart_items', 1);
+            }
+        // $input->save();
         return redirect()->route('user.mycourse.index')
         ->with('success','Inserting successfully');
     }

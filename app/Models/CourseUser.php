@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class CourseUser extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'instructor_name',
+        'Link',
+        'Houre_of_lesson',
+        'Arabic_Level',
+        'days',
         'course_id',
-        'Card_Number',
-        'Name_on_card',
-        'Expiration',
-        'Cvv',
-        'total',
-        'user_id',
+        'order_id',
     ];
 }
