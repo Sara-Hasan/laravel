@@ -19,6 +19,32 @@
 
 <section class="h-100 h-custom" style="background-color: #eee;">
     <div class="container">
+      <div class="col-xl-6 mb-xl-0 mb-4">
+        <div class="card bg-transparent shadow-xl">
+          <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+            <span class="mask bg-gradient-dark"></span>
+            <div class="card-body position-relative z-index-1 p-3">
+              <i class="fas fa-wifi text-white p-2" aria-hidden="true"></i>
+              <h5 class="text-white mt-4 mb-5 pb-2">4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
+              <div class="d-flex">
+                <div class="d-flex">
+                  <div class="me-4">
+                    <p class="text-white text-sm opacity-8 mb-0">Card Holder</p>
+                    <h6 class="text-white mb-0">Jack Peterson</h6>
+                  </div>
+                  <div>
+                    <p class="text-white text-sm opacity-8 mb-0">Expires</p>
+                    <h6 class="text-white mb-0">11/22</h6>
+                  </div>
+                </div>
+                <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
+                  <img class="w-60 mt-2" src="../assets/img/logos/mastercard.png" alt="logo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
