@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
- Arabia : Checkout 
+ Arabia : Booking 
 @endsection
 @section('content')
 <header style="background-image: url('../img/bg2.jpeg'); height: 200px;">
@@ -11,150 +11,159 @@
                 <i class="fa fa-chevron-right"></i></a></span> <span>
                     Course Lists
                 <i class="fa fa-chevron-right"></i></span>
+                About Course
+                <i class="fa fa-chevron-right"></i></span>
+                My course Lists
+                <i class="fa fa-chevron-right"></i></span>
             </p>
-            <h2> Course Lists </h2>
+            <h2> My course Lists </h2>
         </div>
     </div>  
 </header>
 
+
+
 <section class="h-100 h-custom" style="background-color: #eee;">
-    <div class="container">
-      <div class="col-xl-6 mb-xl-0 mb-4">
-        <div class="card bg-transparent shadow-xl">
-          <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
-            <span class="mask bg-gradient-dark"></span>
-            <div class="card-body position-relative z-index-1 p-3">
-              <i class="fas fa-wifi text-white p-2" aria-hidden="true"></i>
-              <h5 class="text-white mt-4 mb-5 pb-2">4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
-              <div class="d-flex">
-                <div class="d-flex">
-                  <div class="me-4">
-                    <p class="text-white text-sm opacity-8 mb-0">Card Holder</p>
-                    <h6 class="text-white mb-0">Jack Peterson</h6>
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card shopping-cart" style="border-radius: 15px;">
+          <div class="card-body text-black">
+
+            <div class="row">
+              <div class="col-lg-6 px-5 py-4">
+
+                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Courses</h3>
+                @php $total = 0;  $id = 0 @endphp
+
+                @if(session('cart'))
+        
+                    @foreach(session('cart') as $id => $details)
+        
+                        @php $total += $details['price_course'] * $details['quantity'] @endphp
+                <div class="d-flex align-items-center mb-5 up" data-id="{{ $id }}">
+                  <div class="flex-shrink-0">
+                    <img src="/storage/{{ $details['image_course'] }}"
+                      class="img-fluid" style="width: 100px; height:100px" alt="image of course">
                   </div>
-                  <div>
-                    <p class="text-white text-sm opacity-8 mb-0">Expires</p>
-                    <h6 class="text-white mb-0">11/22</h6>
+                  <div class="flex-grow-1 ms-3">
+                    <h5 class="text-primary">{{ $details['name_course'] }}</h5>
+                    <div class="d-flex align-items-center">
+                      <p class="fw-bold mb-0 me-5 pe-3">${{ $details['price_course'] }}</p>
+                      <div class="def-number-input number-input safari_only">
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
-                  <img class="w-60 mt-2" src="../assets/img/logos/mastercard.png" alt="logo">
+                @endforeach
+
+              @endif
+
+                <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
+                <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
+                  <h5 class="fw-bold mb-0">Total:</h5>
+                  <h5 class="fw-bold mb-0">${{ $total }}</h5>
+                  {{-- ${{ $details['price_course'] * $details['quantity'] }} --}}
                 </div>
+
               </div>
+              <div class="col-lg-6 px-5 py-4">
+
+                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
+
+                <form action="{{ route('user.mycourse.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
+                  @csrf
+                  <div class="form-outline mb-5">
+                    <input type="text" class="form-control form-control-lg" 
+                     placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
+                    <label class="form-label" for="typeText">Card Number</label>
+                    <span class="text-danger">@error('Card_Number'){{ $message }}@enderror</span>
+                  </div>
+
+                  <div class="form-outline mb-5">
+                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                      placeholder="Enter your name on card" name="Name_on_card"/>
+                    <label class="form-label" for="typeName">Name on card</label>
+                    <span class="text-danger">@error('Name_on_card'){{ $message }}@enderror</span>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-5">
+                      <div class="form-outline">
+                        <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="01/22"
+                          size="7" id="exp" name="Expiration"/>
+                        <label class="form-label" for="typeExp">Expiration</label>
+                        <span class="text-danger">@error('Expiration'){{ $message }}@enderror</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                      <div class="form-outline">
+                        <input type="password" id="typeText" class="form-control form-control-lg"
+                           size="1" minlength="3" maxlength="3" name="Cvv"/>
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}" />
+                          <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}" />
+                          {{-- <input type="text" id="typeText" class="form-control form-control-lg" name="phone" value="{{ Auth::user()->phone }}" /> --}}
+                          <label class="form-label" for="typeText">Cvv</label>
+                        <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
+                      </div>
+                    </div>
+                  </div>
+                      <div class="flo">
+                        <h5 class="fw-bold mb-5" style="bottom: 0;">
+                          <a href="{{ route('courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
+                        </h5>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
+
+                      </div>
+
+                </form>
+
+              </div>
+              
             </div>
+
           </div>
         </div>
       </div>
-<table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-      <tr>
-        <th>Name_on_card</th>
-        <th>Email</th>
-        <th>Course Name</th>
-        <th>Total</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                alt=""
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
-        </td>
-        <td>
-          <span class="badge badge-success rounded-pill">Active</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Edit
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge badge-primary rounded-pill"
-                >Onboarding</span
-            >
-        </td>
-        <td>Junior</td>
-        <td>
-          <button
-                  type="button"
-                  class="btn btn-link btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  >
-            Edit
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Kate Hunington</p>
-              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Designer</p>
-          <p class="text-muted mb-0">UI/UX</p>
-        </td>
-        <td>
-          <span class="badge badge-warning rounded-pill">Awaiting</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button
-                  type="button"
-                  class="btn btn-link btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  >
-            Edit
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    </div>
+  </div>
 </section>
+
+<script>
+  $(".update-cart").change(function (e) {
+    e.preventDefault();
+    var ele = $(this);
+    $.ajax({
+        url: "{{ route('updatecart') }}",
+        method: "patch",
+        data: {
+            _token: '{{ csrf_token() }}', 
+            id: ele.parents(".up").attr("data-id"), 
+            quantity: ele.parents(".up").find(".quantity").val()
+        },
+        success: function (response) {
+          window.location.reload();
+        }
+    });
+  });
+
+  $(".remove-from-cart").click(function (e) {
+    e.preventDefault();
+    var ele = $(this);
+    if(confirm("Are you sure want to remove?")) {
+        $.ajax({
+            url: "{{ route('removefromcart') }}",
+            method: "DELETE",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents(".up").attr("data-id")
+            },
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+    }
+});
+</script> 
+
 @endsection

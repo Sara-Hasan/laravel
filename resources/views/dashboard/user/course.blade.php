@@ -21,7 +21,7 @@
     <div class="container">
             <div class="courses">
                 @foreach ( $courses as $cours )
-                <a href="{{ route('user.singlepage2', $cours->id) }}">
+                <a href="{{ route('singlepage2', $cours->id) }}">
                 <div class="course text-align">
                     <div class="picture" style="background-image: url('/storage/{{ $cours->image_course }}');"></div>
                     <h5> {{ $cours->name_course }}  </h5>

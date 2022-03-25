@@ -29,17 +29,12 @@
       <div class="col">
         <div class="card shopping-cart" style="border-radius: 15px;">
           <div class="card-body text-black">
-
             <div class="row">
-              <div class="col-lg-6 px-5 py-4">
-
+              <div class="col-lg-12 px-5 py-4">
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Courses</h3>
                 @php $total = 0;  $id = 0 @endphp
-
                 @if(session('cart'))
-        
                     @foreach(session('cart') as $id => $details)
-        
                         @php $total += $details['price_course'] * $details['quantity'] @endphp
                 <div class="d-flex align-items-center mb-5 up" data-id="{{ $id }}">
                   <div class="flex-shrink-0">
@@ -59,72 +54,18 @@
                   </div>
                 </div>
                 @endforeach
-
               @endif
-
                 <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
                 <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
                   <h5 class="fw-bold mb-0">Total:</h5>
                   <h5 class="fw-bold mb-0">${{ $total }}</h5>
                   {{-- ${{ $details['price_course'] * $details['quantity'] }} --}}
                 </div>
-
-              </div>
-              <div class="col-lg-6 px-5 py-4">
-
-                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
-
-                <form action="{{ route('user.mycourse.store') }}" role="form text-left" method="post" enctype="multipart/form-data" autocomplete="off" >
-                  @csrf
-                  <div class="form-outline mb-5">
-                    <input type="text" class="form-control form-control-lg" 
-                     placeholder="Enter Card Number" minlength="19" maxlength="19" name="Card_Number"/>
-                    <label class="form-label" for="typeText">Card Number</label>
-                    <span class="text-danger">@error('Card_Number'){{ $message }}@enderror</span>
-                  </div>
-
-                  <div class="form-outline mb-5">
-                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                      placeholder="Enter your name on card" name="Name_on_card"/>
-                    <label class="form-label" for="typeName">Name on card</label>
-                    <span class="text-danger">@error('Name_on_card'){{ $message }}@enderror</span>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6 mb-5">
-                      <div class="form-outline">
-                        <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="01/22"
-                          size="7" id="exp" name="Expiration"/>
-                        <label class="form-label" for="typeExp">Expiration</label>
-                        <span class="text-danger">@error('Expiration'){{ $message }}@enderror</span>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                      <div class="form-outline">
-                        <input type="password" id="typeText" class="form-control form-control-lg"
-                           size="1" minlength="3" maxlength="3" name="Cvv"/>
-                          <input type="text" id="typeText" class="form-control form-control-lg" name="course_id" value="{{ $id }}" />
-                          <input type="text" id="typeText" class="form-control form-control-lg" name="total" value="{{ $total }}" />
-                          <input type="text" id="typeText" class="form-control form-control-lg" name="phone" value="{{ Auth::user()->phone }}" />
-                          <label class="form-label" for="typeText">Cvv</label>
-                        <span class="text-danger">@error('Cvv'){{ $message }}@enderror</span>
-                      </div>
-                    </div>
-                  </div>
-                      <div class="flo">
-                        <h5 class="fw-bold mb-5" style="bottom: 0;">
-                          <a href="{{ route('user.courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
-                        </h5>
-                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
-
-                      </div>
-
-                </form>
-
-              </div>
+                <a href="{{ route('user.book') }}" class="btn btn-primary" style="float: right">proceed to checkout</a>
+                <a href="{{ route('courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
               
+              </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -137,7 +78,7 @@
     e.preventDefault();
     var ele = $(this);
     $.ajax({
-        url: "{{ route('user.updatecart') }}",
+        url: "{{ route('updatecart') }}",
         method: "patch",
         data: {
             _token: '{{ csrf_token() }}', 
@@ -155,7 +96,7 @@
     var ele = $(this);
     if(confirm("Are you sure want to remove?")) {
         $.ajax({
-            url: "{{ route('user.removefromcart') }}",
+            url: "{{ route('removefromcart') }}",
             method: "DELETE",
             data: {
                 _token: '{{ csrf_token() }}', 

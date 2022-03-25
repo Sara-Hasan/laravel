@@ -6,16 +6,14 @@
     <section class="login">
         <div class="container">
             <div class="logning flex-container d-flex">
-                <div class="bg-contact">
+                {{-- <div class="bg-contact">
                     <div class="bg-opacity flex-item-left">
-                        {{-- <div class="text "> --}}
                             <h3>​ Hello, Friends! </h3>
                             <p> ​Enter your personal details
                                  and start journey with us </p>
                             <button><a href="{{ route('instructor.register') }}">SIGN UP</a></button>
-                        {{-- </div> --}}
                     </div>
-                </div>
+                </div> --}}
                 <div class="send flex-item-right pl-md-5 py-5">
                     <h1>SIGN IN</h1>
                     <form action="{{ route('instructor.check') }}" method="post" autocomplete="off">

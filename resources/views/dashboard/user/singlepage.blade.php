@@ -33,7 +33,7 @@
             <h3 class="my-3">Course Details</h3>
               <p> Course hours: {{ $courses->houre_course }} houre</p>
               <p> Course price: {{ $courses->price_course }}$</p>
-              <a href="{{ route('user.addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center cart" role="button">Add to cart</a> 
+              <a href="{{ route('addtocart', $courses->id) }}" class="btn btn-warning btn-block text-center cart" role="button">Add to cart</a> 
           </div>  
         </div>
     </div>

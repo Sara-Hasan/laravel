@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="send flex-item-right pl-md-5 py-5">
-                <form action="{{ route('user.contact') }}" method="post" autocomplete="off">
+                <form action="{{ route('contact') }}" method="post" autocomplete="off">
                     @if (Session::get('success'))
                          <div class="alert alert-success">
                              {{ Session::get('success') }}

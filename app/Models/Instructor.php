@@ -17,6 +17,7 @@ class Instructor extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'instructors';
     protected $fillable = [
         'name',
         'phone',

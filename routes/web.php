@@ -31,33 +31,31 @@ use App\Http\Controllers\Admin\StudentInfoAdminController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index']);
+Route::view('/about', 'dashboard.user.about')->name('about');
+Route::view('/contactcreate', 'dashboard.user.contact')->name('contactcreate');
+Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
+Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
+Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
+Route::get('cart', [CourseController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
+Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
+Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select'])->name('welcome');
 
+
  Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['guest:web','PreventBackHistory'])->group(function(){
         Route::view('/login', 'dashboard.user.login')->name('login');
         Route::view('/register', 'dashboard.user.register')->name('register');
-        Route::view('/contactcreate', 'dashboard.user.contact')->name('contactcreate');
-        Route::view('/about', 'dashboard.user.about')->name('about');
         Route::post('/create', [UserController::class, 'create'])->name('create');
-        Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        Route::post('/contact', [ContactController::class, 'creates'])->name('contact');
-        Route::get('/courses', [CourseController::class, 'index'])->name('courses');
-        Route::resource('singlepage', SinglepageController::class);
-        Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
-        Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
-        Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
-        Route::get('/book', [BookingController::class, 'index'])->name('book');
-        Route::get('cart', [CourseController::class, 'cart'])->name('cart');
-        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
-        Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
-        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
+        Route::post('/check', [UserController::class, 'check'])->name('check');         
     });
         
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
@@ -67,24 +65,12 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
         // Route::get('lhome', [HomeController::class, 'index'])->name('lhome');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
-        Route::get('/courses', [CourseController::class, 'index'])->name('courses');
-        Route::view('/about', 'dashboard.user.about')->name('about');
-        Route::resource('singlepage', SinglepageController::class);
-        Route::get('/singlepage', [SinglepageController::class, 'index'])->name('singlepage');
-        Route::get('/singlepage1', [SinglepageController::class, 'show'])->name('singlepage1');
-        Route::get('/singlepage2/{id}', [SinglepageController::class, 'view'])->name('singlepage2');
         Route::get('/book', [BookingController::class, 'index'])->name('book');
-        Route::get('cart', [CourseController::class, 'cart'])->name('cart');
-        Route::get('add-to-cart/{id}', [CourseController::class, 'addToCart'])->name('addtocart');
-        Route::patch('update-cart', [CourseController::class, 'update'])->name('updatecart');
-        Route::delete('remove-from-cart', [CourseController::class, 'remove'])->name('removefromcart');
         Route::resource('mycourse', BookingController::class);
-        // Route::get('mycourses', [BookingController::class, 'index'])->name('mycourses');
-        // Route::get('mycourse', [BookingController::class, 'create'])->name('mycourse');
-        // Route::post('mycourse1', [BookingController::class, 'store'])->name('mycourse1');
     });
  
 });
+
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
         Route::view('/login','dashboard.admin.login')->name('login');
@@ -102,6 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     });
 
 });
+
 Route::prefix('instructor')->name('instructor.')->group(function(){
     Route::middleware(['guest:instructor','PreventBackHistory'])->group(function(){
         Route::view('/login','dashboard.instructor.login')->name('login');

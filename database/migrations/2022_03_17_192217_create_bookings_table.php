@@ -20,7 +20,6 @@ class CreateBookingsTable extends Migration
             $table->string('Expiration');
             $table->string('Cvv');
             $table->integer('total');
-            $table->string('phone');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
             $table->timestamps();

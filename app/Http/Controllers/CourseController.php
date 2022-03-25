@@ -60,7 +60,7 @@ class CourseController extends Controller
         }
         session()->put('cart', $cart);
 
-        return redirect()->route('user.cart')->with('success', 'Product added to cart successfully!');
+        return redirect()->route('cart')->with('success', 'Product added to cart successfully!');
     }
     /**
 

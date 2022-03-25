@@ -36,7 +36,7 @@
             <span class="subheading">Enhanced Your Skills</span>
             <h2 class="mb-4">Learn Anything You Want Today</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p><a href="{{ route('user.contactcreate') }}" class="btn btn-primary">Get in touch with us</a></p>
+            <p><a href="{{ route('contactcreate') }}" class="btn btn-primary">Get in touch with us</a></p>
           </div>
         </div>
       </div>

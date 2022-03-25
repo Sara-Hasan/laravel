@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CourseUser extends Model
 {
     use HasFactory;
+    protected $table = 'course_users';
     protected $fillable = [
         'instructor_name',
         'Link',

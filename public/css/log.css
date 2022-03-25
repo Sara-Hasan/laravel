@@ -19,7 +19,7 @@
     margin-top: 20px;
 }
 .sign {
-    height: 800px;
+    height: 850px;
 }
 .sign .logning {
     height: 750px;
@@ -28,7 +28,7 @@
     padding-top: 70%;
 }
 .login h1 {
-    padding-top: 50px;
+    padding-top: 20px;
     color: #4986fc;
 }
 .login .bg-contact {
@@ -68,7 +68,7 @@ input[type="text"], input[type="password"] {
     width: 100%;
     height: 40%;
     padding: 12px 20px;
-    margin: 0 0 15px 0;
+    margin: 0 0 25px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;

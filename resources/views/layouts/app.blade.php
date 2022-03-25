@@ -59,13 +59,13 @@
                         <a href="{{ url('/') }}"> Home  </a> 
                     </li>
                     <li> 
-                        <a href="{{ route('user.courses') }}">  Course </a>
+                        <a href="{{ route('courses') }}">  Course </a>
                     </li>
                     <li> 
-                        <a href="{{ route('user.about') }}"> About us  </a> 
+                        <a href="{{ route('about') }}"> About us  </a> 
                     </li>
                     <li> 
-                        <a href="{{ route('user.contactcreate') }}">  Contact us </a>
+                        <a href="{{ route('contactcreate') }}">  Contact us </a>
                     </li>
                     <li> 
                         <a href="{{ route('instructor.login') }}">  Instructor </a>
@@ -99,7 +99,7 @@
                   </li>
                 @endguest
                 <li> 
-                    <a href="{{ route('user.cart') }}"> <i class="fa fa-shopping-cart"></i><span>@if (Session::has('cart_items'))<span class="cart_items">{{ Session::get('cart_items') }}</span>
+                    <a href="{{ route('cart') }}"> <i class="fa fa-shopping-cart"></i><span>@if (Session::has('cart_items'))<span class="cart_items">{{ Session::get('cart_items') }}</span>
                         @endif</span></a>
                 </li>
                 </ul>
@@ -181,9 +181,9 @@
 				<p class="footer-links">
 					<a href="{{ url('/') }}">Home</a>
 					|
-					<a href="{{ route('user.about') }}">About</a>
+					<a href="{{ route('about') }}">About</a>
 					|
-					<a href="{{ route('user.contactcreate') }}">Contact</a>
+					<a href="{{ route('contactcreate') }}">Contact</a>
 				</p>
 
 				<p class="footer-company-name">© 2022 Arabia Ltd.</p>
