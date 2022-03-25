@@ -33,9 +33,13 @@
     }
     .contact {
         height: 950px;
+        margin-bottom: 50px;
+    }
+    .contact .bg-opacity h3 {
+        padding-top: 0px;
     }
     .contact .send{ 
-        height: 500px;
+        height: 550px;
     }
     .ftco-about .about-wrap {
         position: relative;

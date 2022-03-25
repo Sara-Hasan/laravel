@@ -18,9 +18,29 @@
                 <h1>SIGN UP</h1>
                 <form action="{{ route('user.create') }}" method="post" autocomplete="off">
                     @if (Session::get('success'))
-                         <div class="alert alert-success">
+                         {{-- <div class="alert alert-success">
                              {{ Session::get('success') }}
-                         </div>
+                         </div> --}}
+                          <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ Session::get('success') }}
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     @endif
                     @if (Session::get('fail'))
                     <div class="alert alert-danger">
@@ -43,7 +63,7 @@
                     <input type="password" class="form-control" name="cpassword" placeholder="Enter confirm password" value="{{ old('cpassword') }}">
                     <span class="text-danger">@error('cpassword'){{ $message }} @enderror</span>
 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Register</button>                    
 
                     <p class="text-center go">Already have an account? <a href="{{ route('user.login') }}" class="link">Sign In</a></p>
 

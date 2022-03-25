@@ -585,7 +585,7 @@ header .head {
 .contact .contacting {
     box-shadow: 0px 2px 25px -13px rgb(0 0 0 / 26%);
     border-radius: 20px;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 1fr 2fr;
 }
 .contact .bg-contact {
     background-image: url("https://images.pexels.com/photos/4492129/pexels-photo-4492129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
@@ -606,6 +606,10 @@ header .head {
     line-height: 2;
     margin-top: 20px;
 }
+.contact .bg-opacity h3 {
+    padding-top: 120px;
+}
+
 .contact .send {
     padding: 40px;
 

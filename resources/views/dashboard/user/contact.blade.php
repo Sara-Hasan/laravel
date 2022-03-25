@@ -71,7 +71,7 @@
                     <input type="text" id="message" name="message" placeholder="Enter your message..." value="{{ old('message') }}">
                     <span class="text-danger">@error('message'){{ $message }} @enderror</span>
 
-                    <button type="submit" class="btn btn-primary">Request Clarification</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                 </form>
             </div>
         </div>

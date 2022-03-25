@@ -22,7 +22,7 @@
     height: 800px;
 }
 .sign .logning {
-    height: 650px;
+    height: 750px;
 }
 .sign .logning .bg-opacity {
     padding-top: 70%;
@@ -64,8 +64,7 @@
 .login .flex-item-right {
     flex: 50%;
 }
-input[type="text"],
-input[type="password"] {
+input[type="text"], input[type="password"] {
     width: 100%;
     height: 40%;
     padding: 12px 20px;
@@ -108,7 +107,7 @@ input[type="password"] {
 .login button a {
     color: #fff;
 }
-.contacting input[type="text"],
+/* .contacting input[type="text"],
 input[type="password"] {
     width: 100%;
     height: 40%;
@@ -120,7 +119,7 @@ input[type="password"] {
     font-size: 0.9rem;
     background-color: #e2e2e7;
     border: none;
-}
+} */
 .cart {
     width: 100%;
     height: 9%;
