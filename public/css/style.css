@@ -327,6 +327,7 @@ header .head {
 .icon,
 .text {
     flex: 30%;
+    padding: 10px;
 }
 .info .row {
     padding: 10em 0;

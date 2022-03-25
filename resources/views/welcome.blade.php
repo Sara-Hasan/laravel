@@ -187,7 +187,7 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </p>
-                        <p class="mb-4">A very effective and enjoyable way to learn Arabic! And the teachers 
+                        <p class="mb-4">A very very effective and enjoyable way to learn Arabic! And the teachers 
                             are wonderful! I learned so much already from my first lesson </p>
                         <div class="d-flex align-items-center">
                         <div class="user-img" style="background-image: url(../img/person_4.png)"></div>
