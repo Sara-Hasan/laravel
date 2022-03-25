@@ -207,8 +207,8 @@
 			<div class="footer-right">
 				<p class="footer-company-about">
 					<span>About Us</span>
-                    Far far away, behind the word mountains,
-                    far from the countries Vokalia and Consonantia, there live the blind texts.
+                    We are  Arabic language study  program that offers a fully integrated curriculum, giving students
+                     the tools they need to immerse themselves in the living Arabic language. 
                     <div class="footer-icons">
 					<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
 					<a href="#"><i class="fa-brands fa-twitter"></i></a>

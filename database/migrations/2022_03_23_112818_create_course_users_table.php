@@ -15,11 +15,7 @@ class CreateCourseUsersTable extends Migration
     {
         Schema::create('course_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('instructor_name');
-            $table->longText('Link');
-            $table->string('Houre_of_lesson');
-            $table->string('Arabic_Level');
-            $table->string('days');
+            $table->string('price');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('order_id');
             $table->timestamps();

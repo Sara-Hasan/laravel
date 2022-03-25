@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
+use App\Models\CourseUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -30,7 +31,8 @@ class BookingController extends Controller
         ]);
             $input = $request->all();
             $input['user_id'] = Auth::user()->id;
-            Booking::create($input);
+            $order = Booking::create($input);
+
             if(Session::has(Auth::guard()->user()->id.'courses')){
                 Session::push(Auth::guard()->user()->id.'courses', $input);
             }else{
@@ -42,8 +44,19 @@ class BookingController extends Controller
             }else{
                 Session::put('cart_items', 1);
             }
-        // $input->save();
-        return redirect()->route('user.mycourse.index')
+            $cart = session()->get('cart', []);
+            // $cartitems = Cart::where('user_id', Auth::id())->get();
+            foreach($cart as $item)
+            {
+                CourseUser::create([
+                    "order_id"-> $order->id,
+                    "course_id" -> $item->course_id,
+                    "price" -> $item->price,
+                ]);
+            }
+
+            // $input->save();
+            return redirect()->route('user.mycourse.index')
         ->with('success','Inserting successfully');
     }
 }

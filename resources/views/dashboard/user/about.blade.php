@@ -35,7 +35,12 @@
            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
             <span class="subheading">Enhanced Your Skills</span>
             <h2 class="mb-4">Learn Anything You Want Today</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <p>We are  Arabic language study  program that offers a fully integrated curriculum, giving 
+              students the tools they need to immerse themselves in the living Arabic language. Our 
+              progressive teaching philosophy puts a high value on verbal communication and human interface,
+               and all of our programs have a special focus on intercultural communication. By mastering the 
+               authentic language, our students forge meaningful connections with the wealth of Arab culture
+                & history that surrounds them.</p>
             <p><a href="{{ route('contactcreate') }}" class="btn btn-primary">Get in touch with us</a></p>
           </div>
         </div>
