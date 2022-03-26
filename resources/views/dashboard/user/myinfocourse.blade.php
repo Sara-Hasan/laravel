@@ -26,16 +26,18 @@
             <div class="card-body position-relative z-index-1 p-3">
               <i class="fas fa-wifi text-white p-2" aria-hidden="true"></i>
               {{-- {{ $booking->Name_on_card }} --}}
-              <h5 class="text-white mt-4 mb-5 pb-2"> 4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
+      @foreach ($booking as $item)
+              <h5 class="text-white mt-4 mb-5 pb-2">{{ $item->Card_Number }} </h5>
+              {{-- 4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852 --}}
               <div class="d-flex">
                 <div class="d-flex">
                   <div class="me-4">
                     <p class="text-white text-sm opacity-8 mb-0">Card Holder</p>
-                    <h6 class="text-white mb-0">Jack Peterson</h6>
+                    <h6 class="text-white mb-0"> {{ $item->Name_on_card }}</h6>
                   </div>
                   <div>
                     <p class="text-white text-sm opacity-8 mb-0">Expires</p>
-                    <h6 class="text-white mb-0">11/22</h6>
+                    <h6 class="text-white mb-0">{{ $item->Expiration }}</h6>
                   </div>
                 </div>
                 <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
@@ -49,111 +51,40 @@
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
-        <th>Name_on_card</th>
+        <th>Name</th>
         <th>Email</th>
+        <th>Phone</th>
         <th>Course Name</th>
         <th>Total</th>
-        <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody>          
       <tr>
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                src="/storage/{{ Auth::user()->image }}"
                 alt=""
                 style="width: 45px; height: 45px"
                 class="rounded-circle"
                 />
             <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
+              <p class="fw-bold mb-1">{{ Auth::user()->name }}</p>
             </div>
           </div>
         </td>
         <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
+          <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
         </td>
         <td>
-          <span class="badge badge-success rounded-pill">Active</span>
+          <p class="fw-bold mb-1">{{ Auth::user()->phone }}</p>
         </td>
-        <td>Senior</td>
+        <td>Classic Arabic {{ $item->course_id }}</td>
         <td>
-          <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Edit
-          </button>
+      ${{ $item->total }}
         </td>
       </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge badge-primary rounded-pill"
-                >Onboarding</span
-            >
-        </td>
-        <td>Junior</td>
-        <td>
-          <button
-                  type="button"
-                  class="btn btn-link btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  >
-            Edit
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                class="rounded-circle"
-                alt=""
-                style="width: 45px; height: 45px"
-                />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Kate Hunington</p>
-              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Designer</p>
-          <p class="text-muted mb-0">UI/UX</p>
-        </td>
-        <td>
-          <span class="badge badge-warning rounded-pill">Awaiting</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button
-                  type="button"
-                  class="btn btn-link btn-rounded btn-sm fw-bold"
-                  data-mdb-ripple-color="dark"
-                  >
-            Edit
-          </button>
-        </td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 </div>

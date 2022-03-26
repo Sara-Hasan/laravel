@@ -17,13 +17,7 @@ class BookingController extends Controller
         $booking = DB::table('bookings')->get();
         return view ('dashboard.user.checkout',compact('booking'));
     }
-    // public function info($id)
-    // {
-    //     // $booking = DB::table('bookings')->get();
-    //     $booking = Booking::findOrFail($id);
-    //     dd($booking);
-    //     return view ('dashboard.user.myinfocourse',compact('booking'));
-    // }
+   
     public function info()
     {
         $booking = DB::table('bookings')->get();
@@ -70,7 +64,7 @@ class BookingController extends Controller
             }
 
             // $input->save();
-            return redirect()->route('user.myinfocourse')
+            return redirect()->route('user.mycourse.index')
         ->with('success','Inserting successfully');
     }
 }

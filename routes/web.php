@@ -16,6 +16,7 @@ use App\Http\Controllers\User\SinglepageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\BookingAdminController;
 use App\Http\Controllers\Admin\StudentInfoAdminController;
+use App\Http\Controllers\User\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,8 +68,9 @@ Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'select']
         // Route::post('/check', [UserController::class, 'check'])->name('check'); 
         Route::get('/book', [BookingController::class, 'index'])->name('book');
         // Route::get('myinfocourse/{user_id}', [BookingController::class, 'info'])->name('myinfocourse');
-        Route::get('myinfocourse', [BookingController::class, 'info'])->name('myinfocourse');
+        // Route::get('myinfocourse', [BookingController::class, 'info'])->name('myinfocourse');
         Route::resource('mycourse', BookingController::class);
+        Route::resource('myinfocourse', CheckoutController::class);
     });
  
 });

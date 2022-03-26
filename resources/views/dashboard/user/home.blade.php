@@ -58,6 +58,7 @@
                         {{-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> --}}
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -85,7 +86,8 @@
                                             <div class="col-md-6">
                                                 <p>{{ Auth::guard('web')->user()->phone }}</p>
                                             </div>
-                                        </div>
+                                  
+                                            <a href="{{ route('user.myinfocourse.index') }}" class="btn btn-primary" style="float: right">proceed to checkout</a>      </div>
                             </div>
                             <div class="tab-pane fade" id="link" role="tabpanel" aria-labelledby="profile-tab">
 
@@ -106,76 +108,30 @@
                                     <td>
                                       <div class="d-flex align-items-center">
                                         <div class="ms-3">
-                                          <p class="fw-bold mb-1">John Doe</p>
+                                          <p class="fw-bold mb-1">Noor</p>
                                         </div>
                                       </div>
                                     </td>
                                     <td>
-                                      <p class="fw-normal mb-1">Software engineer</p>
+                                      <p class="fw-normal mb-1">https://zoom.us/</p>
                                     </td>
-                                    <td>Senior</td>
-                                    <td>Senior</td>
-                                    <td>Senior</td>
-                                    <td>Senior</td>
+                                    <td>2-3</td>
+                                    <td>Good</td>
+                                    <td>Monday</td>
+                                    <td>Arabic classic</td>
                                   </tr>
                                  
                                 </tbody>
                               </table>
                             </div>
                         </div>
-                            {{-- <div class="tab-pane fade" id="link" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Link</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Your Teacher</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>10$/hr</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Houre of lesson</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>230</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Arabic Level</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Days</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>6 months</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Course Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>arabic</p>
-                                    </div>
-                                </div>
-                    </div> --}}
                         </div>
+                        </div>
+                        
                     </div>
+                    
                 </div>
+                
             </form>           
         </div>
     </div>

@@ -127,25 +127,21 @@
                 <div class="d-flex"> <i class="far fa-lightbulb"></i> </div>
                 <h5> ​How We Teach </h5>
                 <p>Distance learning will be with specialized Arabic teachers after determining your Arabic level</p>   
-                <span> <a href="#"> More </a> </span>         
             </div>
             <div class="col-sec text-align">
                 <div class="d-flex"><i class="fas fa-medal"></i></div>
                 <h5> Results </h5>
                 <p>You will be a very good Arabic speaker with a lot of practice and use with your friends</p>   
-                <span> <a href="#"> More </a> </span>                      
             </div>
              <div class="col-sec text-align">
                 <div class="d-flex"><i class="fas fa-question-circle"></i></div>
                 <h5> Support </h5>
                 <p>If you have any questions or inquiries, do not hesitate to contact us and we will answer you as soon as possible</p>   
-                <span> <a href="#"> More </a> </span>                       
             </div>
             <div class="col-sec text-align">
                 <div class="d-flex"><i class="fas fa-certificate"></i></div>
                 <h5> Get Certified </h5>
                 <p>You will receive an approved certificate upon completion of the course you have registered for</p>   
-                <span> <a href="#"> More </a> </span>                       
             </div>
         </div>
         
