@@ -25,7 +25,8 @@
             <span class="mask bg-gradient-dark"></span>
             <div class="card-body position-relative z-index-1 p-3">
               <i class="fas fa-wifi text-white p-2" aria-hidden="true"></i>
-              <h5 class="text-white mt-4 mb-5 pb-2">4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
+              {{-- {{ $booking->Name_on_card }} --}}
+              <h5 class="text-white mt-4 mb-5 pb-2"> 4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
               <div class="d-flex">
                 <div class="d-flex">
                   <div class="me-4">

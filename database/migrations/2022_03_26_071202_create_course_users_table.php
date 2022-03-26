@@ -14,15 +14,17 @@ class CreateCourseUsersTable extends Migration
     public function up()
     {
         Schema::create('course_users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('order_id');
-            $table->timestamps();
-            $table->foreign('course_id')
-            ->references('id')->on('courses')->onDelete('cascade');
-            $table->foreign('order_id')
-            ->references('id')->on('orders')->onDelete('cascade');
-
+            Schema::create('course_users', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('course_id');
+                $table->unsignedBigInteger('order_id');
+                $table->timestamps();
+                $table->foreign('course_id')
+                ->references('id')->on('courses')->onDelete('cascade');
+                $table->foreign('order_id')
+                ->references('id')->on('bookings')->onDelete('cascade');
+    
+            });
         });
     }
 

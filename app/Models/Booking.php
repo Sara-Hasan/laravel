@@ -7,16 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    use HasFactory;
+use HasFactory;
     protected $table = 'bookings';
     protected $fillable = [
-        'course_id',
         'Card_Number',
         'Name_on_card',
         'Expiration',
         'Cvv',
         'total',
         'user_id',
-        'phone',
+        'course_id',
     ];
+    public function course()
+    {
+        return $this->belongsToMany(Booking::class,'course_users');
+    }
 }

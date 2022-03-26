@@ -113,6 +113,7 @@
                           <a href="{{ route('courses') }}"><i class="fas fa-angle-left me-2"></i>Back to courses</a>
                         </h5>
                         <button type="submit" class="btn btn-primary btn-block btn-lg" style="width:50%">Book now</button>
+                        {{-- <a href="{{ route('user.mycourse.index', Auth::user()->id) }}"><i class="fas fa-angle-left me-2"></i>order</a> --}}
 
                       </div>
 
