@@ -49,10 +49,10 @@ class BookingController extends Controller
             foreach($cart as $item)
             {
                 CourseUser::create([
-                    "order_id"-> $order->id,
-                    "course_id" -> $item->course_id,
-                    "price" -> $item->price,
+                    "course_id" => $item['id'],
+                    "order_id"=> $order->id,
                 ]);
+            // dd($item['price_course']);
             }
 
             // $input->save();

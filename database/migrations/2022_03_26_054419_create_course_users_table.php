@@ -15,7 +15,6 @@ class CreateCourseUsersTable extends Migration
     {
         Schema::create('course_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('price');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('order_id');
             $table->timestamps();
@@ -23,6 +22,7 @@ class CreateCourseUsersTable extends Migration
             ->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('order_id')
             ->references('id')->on('orders')->onDelete('cascade');
+
         });
     }
 

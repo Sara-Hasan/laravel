@@ -45,6 +45,8 @@ class CourseController extends Controller
 
             $cart[$id] = [
 
+                "id" => $product->id,
+
                 "name_course" => $product->name_course,
 
                 "quantity" => 1,
@@ -59,6 +61,7 @@ class CourseController extends Controller
 
         }
         session()->put('cart', $cart);
+        // dd($cart);
 
         return redirect()->route('cart')->with('success', 'Product added to cart successfully!');
     }
