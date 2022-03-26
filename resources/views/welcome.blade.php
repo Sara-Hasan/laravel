@@ -29,13 +29,13 @@
                 <div class="picture" style="background-image: url('../img/arabic-letters-qonline-400x250.jpg');"></div>
                 <h5>Modern standard Arabic </h5>
                 <div class="line"></div>
-                <span> ​$300                              50 </span>
+                <span> ​$300                              150 </span>
             </div> 
             <div class="course text-align">
                 <div class="picture" style="background-image: url('../img/Learning_Arabic_calligraphy.jpg');"></div>
                 <h5> Classical Arabic Program</h5>
                 <div class="line"></div>
-                <span> ​$200                             50 </span>
+                <span> ​$300                             150 </span>
             </div> 
             <div class="course text-align">
                 <div class="picture" style="background-image: url('../img/tenforms-qonline-400x250.jpg');"></div>
@@ -47,7 +47,7 @@
                 <div class="picture" style="background-image: url('../img/course1.jpeg');"></div>
                 <h5>Corporate Private Studies </h5>
                 <div class="line"></div>
-                <span> ​$300                              100 </span>
+                <span> ​$1000                             400 </span>
             </div> 
         </div>
     </div>
